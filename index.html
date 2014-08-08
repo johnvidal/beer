@@ -3,25 +3,37 @@
     <head>
         <meta charset="utf-8">
         <title>Holy Beer</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
         <script src="js/tentativa.js"></script>
-        <link rel="stylesheet" href="css/estilo_title.css">
+        <link rel="stylesheet" href="css/estilo.css">
     </head>
 
     <body>
-        
-        <header class="container">
-            <h1>Holy Beer</h1>
-            <p class="titulo"> A cerveja de cada dia.</p>
+        <header class="mainTitle">
+            <h2 class="cs-text">
+                <span class="cs-text-cut">
+                    <span class="word1">Holy Beer</span>
+                </span>
+                <span class="cs-text-mid">A cerveja de cada dia.</span>
+                <span class="'cs-text-cut-down">
+                    <span class="word1">Holy Beer</span>
+                </span>
+            </h2>
         </header>
-        <hr>
-
+        
         <div>
             <input id="min" type="number" name="min.">
             <input id="max" type="number" name="max.">
             <button onclick="getValue()" onclick="clearBox('cart_item')" >Click me</button>
             <button onclick.action="formulario.html" style="float: right;">Formulario de Cadastro</button>
         </div>
+
+        <div id="modalCreate" title="Teste">
+            <p>Teste</p>
+        </div>
+
 
         <div class="paineis">
             <section class="painel" id="section1">

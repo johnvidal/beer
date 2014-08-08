@@ -42,7 +42,7 @@ body {
   position: relative;
   margin-left: 1%;
   margin-right: 1%;
-  height: 350px;
+  height: 400px;
 }
 [class*="col"]:last-child {
   margin-right: 0;
@@ -234,6 +234,17 @@ footer{
   float:right;
 }
 
+.buttonDel{
+  position: absolute;
+  top: 370px;
+  right: 10px;
+}
+
+.buttonEdit{
+  position: absolute;
+  top: 370px;
+  right: 68px;
+}
 
 
 /* formulario css */
@@ -320,3 +331,5 @@ footer{
 .formulario .button:hover {
     background: #CF7A7A
 }
+
+

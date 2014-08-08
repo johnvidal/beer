@@ -1,4 +1,32 @@
-function ajax(a, b){
+/* funçãos para carregar o parse */
+function carregar(bbbb){
+    $.ajax({
+        beforeSend: function(xhrObj){
+            xhrObj.setRequestHeader("X-Parse-Application-Id","L7F9ql3DctcnCtoDwah0GGG8GFw8vuWJ6OWFJgNp");
+            xhrObj.setRequestHeader("X-Parse-REST-API-Key","TLtoYkorgdYipUyLayJnWEjZUuiuhWhTimVzJLg5");                
+        },
+        type:"DELETE",
+        url:'https://api.parse.com/1/classes/Cervejas/'+ bbbb,
+        processData:false,
+        dataType:"json",
+    }).then(function(){
+        document.getElementById("section1").innerHTML = ""
+        loadParse(1, 100)
+    })
+}
+
+function modal() {
+    $( "#modalCreate" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  };
+
+function loadParse(a, b){
 
         $.ajax({
                         beforeSend: function(xhrObj){
@@ -10,44 +38,52 @@ function ajax(a, b){
                         processData:false,
                         dataType:"json",
                 }).then(function(data) {
-               
-               for(var i = 0; i < data.results.length; i++){
-                    jQuery("#section1").append('<div class="main loginboxinner">' +
-                        '<div class="col3">' +
-                        '<h3 class="titleCall">'+data.results[i].nome+'</h3>' +
-                        '<p>'+data.results[i].descr+'</p>' +
-                        '<h5>'+data.results[i].teor+'</h5>' +
-                        '<h5>'+data.results[i].preco+'</h5>' +
-                        '</div>' +
-                        '<ul id="ulCall"></ul>' +
-                        '</div>');
+                            
 
-                }    
+                   for(var i = 0; i < data.results.length; i++){
+
+                        var carregandoObjeto = data.results[i].objectId
+
+                        jQuery("#section1").append('<div class="blocos">' +
+                            '<div class="col3">' +
+                            '<h3 class="titleCall">'+data.results[i].nome+'</h3>' +
+                            '<p>'+data.results[i].descr+'</p>' +
+                            '<h5>'+data.results[i].teor+'</h5>' +
+                            '<h5>'+data.results[i].preco+'</h5>' +
+                            '<button class="buttonDel" onclick="carregar(\''+ data.results[i].objectId +'\')" value="delete">Delete</button>'+
+                            '<button class="buttonEdit" id="buttonEdit" onclick="modal()" value="Editar">Editar</button>'+
+                            '</div>' +
+                            '<ul id="ulCall"></ul>' +
+                            '</div>');
+                    }    
         });
 };
 
- function getValue(){
+/* filtro de Teor Alcoólico */
+
+function getValue(){
     var a = document.getElementById("min").value
     var b = document.getElementById("max").value
     document.getElementById("section1").innerHTML = ""
-    ajax(a, b)
+    loadParse(a, b)
+}
 
- }
+$(document).ready(loadParse(1, 100))
 
-$(document).ready(ajax(1, 100))
+/* prompt de cadastro */
+
+
+/* validador do cadastro*/
 
 $(function(){
  
     $("#button").click(function(){
  
-        var a1 = $("input[name=field1]").val();
-        var b2 = $("textarea[name=field4]").val();
-        var c3 = parseFloat($("input[name=field7]").val());
-        var d4 = parseFloat($("input[name=field10]").val());
-        //var cerveja = {
-             //"nome": "skol",
-             //"descr": "lol"
-        //}
+        var cervejasNome = {"nome":$("input[name=enterName]").val()};
+        var cervejasDescr = {"descr":$("textarea[name=enterDescr]").val()};
+        var cervejasTeor = {"teor":parseFloat($("input[name=enterTeor]").val())};
+        var cervejasPreco = {"preco":parseFloat($("input[name=enterPreco]").val())};
+       
         $.ajax({
 
             beforeSend: function(xhrObj){
@@ -56,10 +92,7 @@ $(function(){
             },
              
             type: "POST",
-            data: JSON.stringify({"nome":a1,
-                                "descr":b2,
-                                "teor":c3,
-                                "preco":d4}),
+            data: JSON.stringify(cervejasNome, cervejasDescr, cervejasTeor, cervejasPreco),
             url: 'https://api.parse.com/1/classes/Cervejas',
             dataType: "json",
             contentType: "application/json; charset=UTF-8"
