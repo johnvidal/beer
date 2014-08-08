@@ -246,6 +246,10 @@ footer{
   right: 68px;
 }
 
+#modalCreate {
+    display: none;
+}
+
 
 /* formulario css */
 #divFormulario {
