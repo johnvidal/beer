@@ -27,11 +27,52 @@
             <input id="min" type="number" name="min.">
             <input id="max" type="number" name="max.">
             <button onclick="getValue()" onclick="clearBox('cart_item')" >Click me</button>
-            <button onclick.action="formulario.html" style="float: right;">Formulario de Cadastro</button>
+            <button onclick="cadastro()" style="float: right;">Formulario de Cadastro</button>
         </div>
 
-        <div id="modalCreate" title="Teste">
-            <p>Teste</p>
+        <div id="modalCadastro">
+            <form class="formulario" method="post" novalidate="">
+
+                <h1>Cadastro de Cerveja
+                    <span>Preencha todos os campos abaixo</span>
+                </h1>
+                       
+                       
+                <div id="enterName-container" class="field f_100">
+                    <label for="enterName">
+                        Nome
+                    </label>
+                    <input type="text" name="enterName" id="enterName" required="required">
+                </div>
+                       
+                       
+                <div id="enterDescr-container" class="field f_100">
+                    <label for="enterDescr">
+                        Descrição
+                    </label>
+                    <textarea rows="5" cols="20" name="enterDescr" id="enterDescr" required="required"></textarea>
+                </div>
+                       
+                       
+                <div id="enterTeor-container" class="field f_100">
+                    <label for="enterTeor">
+                        Teor Alcoólico
+                    </label>
+                    <input type="number" name="enterTeor" id="enterTeor" required="required">
+                </div>
+                       
+                       
+                <div id="enterPreco-container" class="field f_100">
+                    <label for="enterPreco">
+                        Preço
+                    </label>
+                    <input type="number" name="enterPreco" id="enterPreco" required="required">
+                </div>
+                             
+            </form>
+        </div>
+
+        <div id="modalEdit" title="Teste">
         </div>
 
 

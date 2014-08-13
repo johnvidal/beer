@@ -246,8 +246,12 @@ footer{
   right: 68px;
 }
 
-#modalCreate {
+#modalEdit{
     display: none;
+}
+
+#modalCadastro {
+  display: none;
 }
 
 
@@ -334,6 +338,10 @@ footer{
 }
 .formulario .button:hover {
     background: #CF7A7A
+}
+
+.ui-dialog-titlebar-close {
+  visibility: hidden;
 }
 
 
