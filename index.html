@@ -6,92 +6,52 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
         <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-        <script src="js/tentativa.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
         <link rel="stylesheet" href="css/estilo.css">
     </head>
 
     <body>
-        <header class="mainTitle">
-            <h2 class="cs-text">
-                <span class="cs-text-cut">
-                    <span class="word1">Holy Beer</span>
-                </span>
-                <span class="cs-text-mid">A cerveja de cada dia.</span>
-                <span class="'cs-text-cut-down">
-                    <span class="word1">Holy Beer</span>
-                </span>
-            </h2>
+        <header class="container_header">
+            <h1>Holy Beer</h1>
+            <p class="titulo"> A cerveja de cada dia.</p>
+            <nav id="NAV_1">
+                <span id="SPAN_2"></span>
+                <ul id="UL_3">
+                    <li id="LI_4">
+                        <a href="index.html" title="Loja" id="A_5">Home</a>
+                    </li>
+                    <li id="LI_10">
+                        <a href="cadastro.html" title="Minha HNB" id="A_11">Cadastro</a>
+                    </li>
+
+                    <input type="image" src="img/icones/brasil.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Brasil")'>
+                    <input type="image" src="img/icones/alemanha.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Alemanha")'>
+                    <input type="image" src="img/icones/belgica.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Bélgica")'>
+                    <input type="image" src="img/icones/EUA.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Estados Unidos")'>
+                    <input type="image" src="img/icones/holanda.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Holanda")'>
+                    <input type="image" src="img/icones/irlanda.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Irlanda")'>
+                    <input type="image" src="img/icones/mexico.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("México")'>
+                    <input type="image" src="img/icones/dinamarca.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Dinamarca")'>
+                    
+                </ul><span id="SPAN_21"></span>
+            </nav>
         </header>
-        
-        <div>
-            <input id="min" type="number" name="min.">
-            <input id="max" type="number" name="max.">
-            <button onclick="getValue()" onclick="clearBox('cart_item')" >Click me</button>
-            <button onclick="cadastro()" style="float: right;">Formulario de Cadastro</button>
-        </div>
-
-        <div id="modalCadastro">
-            <form class="formulario" method="post" novalidate="">
-
-                <h1>Cadastro de Cerveja
-                    <span>Preencha todos os campos abaixo</span>
-                </h1>
-                       
-                       
-                <div id="enterName-container" class="field f_100">
-                    <label for="enterName">
-                        Nome
-                    </label>
-                    <input type="text" name="enterName" id="enterName" required="required">
-                </div>
-                       
-                       
-                <div id="enterDescr-container" class="field f_100">
-                    <label for="enterDescr">
-                        Descrição
-                    </label>
-                    <textarea rows="5" cols="20" name="enterDescr" id="enterDescr" required="required"></textarea>
-                </div>
-                       
-                       
-                <div id="enterTeor-container" class="field f_100">
-                    <label for="enterTeor">
-                        Teor Alcoólico
-                    </label>
-                    <input type="number" name="enterTeor" id="enterTeor" required="required">
-                </div>
-                       
-                       
-                <div id="enterPreco-container" class="field f_100">
-                    <label for="enterPreco">
-                        Preço
-                    </label>
-                    <input type="number" name="enterPreco" id="enterPreco" required="required">
-                </div>
-                             
-            </form>
-        </div>
-
-        <div id="modalEdit" title="Teste">
-        </div>
 
 
-        <div class="paineis">
-            <section class="painel" id="section1">
-                <h2>Cervejas</h2>
-            </section>
-        </div>
-
-        <footer>
-            <div class="col12">
-                <h4>Endereço</h4>
-                <p>Av. Alberto Barbeta<br>
-                Numero: 2280<br>
-                Bairro: Jardim Panorama II</p>
-                <h4>Venha Conferir!</h4>
+        <div class="container_body" align="center">
+            <div id="paineis" class="row" align="center">
+                    
             </div>
-        </footer>   
+        </div>
+        
+
+
+        <div id="modal">
+        </div>
+
     </body>
-    <script type="text/javascript">
-    </script>
-</html>
+
+
+<html>

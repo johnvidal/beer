@@ -1,71 +1,235 @@
+/* função ajax generica */
 
-		var cerveja = [{"nome":"Heineken", 
-			    "descricao":"A Heineken é uma das mais famosas cervejas vendidas no mundo. Aqui no Brasil, a Heineken é produzida e distribuida pela Cervejaria Heineken, exceto o keg e a lata, que são importados da Holanda",
-			    "teor":"5%",
-				"preco":"R$1,99"
-				}, 
-			    {"nome":"Guinness", 
-			    "descricao":"A Guinness Draught é uma Cerveja de alta fermentação, feita com malte torrado, que lhe confere sua cor marcante e escura e um paladar tostado.",
-			    "teor":"4,1",
-				"preco":"R$1,99"
-				},
-			    {"nome":"Stella Artois", 
-			    "descricao":"Com um aroma típico do lúpulos selecionados e uma nota frutada, Stella Artois tem amargor acentuado, porém macio. Seu sabor marcante e sofisticado é muito bem balanceado.",
-			    "teor":"5%",
-				"preco":"R$1,99"
-				},
-				{"nome":"Baden Baden",
-				"descricao":"É mais encorpada e alcoólica. Baden Baden Bitter 1999 possui cor avermelhada, aroma intenso e genuíno de lúpulos florais e condimentados, com um elegante e elevado amargor.",
-				"teor":"5,2%",
-				"preco":"R$1,99"
-				},
-				{"nome":"Bear Beer", 
-			    "descricao":"Em geral, as cervejas Premium contêm maior teor de malte de cevada, isto é, usam menos adjuntos. Seu aroma revela a maior presença do malte, o que a torna mais dourada e levemente doce. Para contrabalançar, é utilizado mais lúpulo, o que aumenta o seu amargor.",
-			    "teor":"5%",
-				"preco":"R$1,99"
-				}, 
-			    {"nome":"Murphy", 
-			    "descricao":"Como uma legítima cerveja irlandesa, a Murphy’s Irish Stout tem sabor marcante e apresenta o tradicional istema Draughtflow, que cria uma espuma incrivelmente cremosa que é marca registrada deste tipo de bebida.",
-			    "teor":"4%",
-				"preco":"R$1,99"
-				},
-			    {"nome":"Corona", 
-			    "descricao":"A Cerveza Corona é refrescante, transparente, com espuma clara, mas pouco persistente e aroma discreto.",
-			    "teor":"4,6%",
-				"preco":"R$1,99"
-				},
-				{"nome":"8.6",
-				"descricao":"Caracterizada por uma excepcional longa fermentação, que permite o completo desenvolvimento de seu sabor.",
-				"teor":"7,9%",
-				"preco":"R$1,99"
-				},
-				{"nome":"Paulaner", 
-			    "descricao":"Esta Cerveja é um deleite para todos os sentidos: com seu refinado aroma lúpulo e seu sabor natural e equilibrado, ocupa um dos primeiros lugares na escala de popularidade.",
-			    "teor":"4,9%",
-				"preco":"R$1,99"
-				}]
+function jQuerySubmit(type, url, retorno) {
+    $.ajax({
+        beforeSend: function(xhrObj){
+            xhrObj.setRequestHeader("X-Parse-Application-Id","L7F9ql3DctcnCtoDwah0GGG8GFw8vuWJ6OWFJgNp");
+            xhrObj.setRequestHeader("X-Parse-REST-API-Key","TLtoYkorgdYipUyLayJnWEjZUuiuhWhTimVzJLg5");                
+        },
+        type: type,
+        url: url,
+        processData: false,
+        dataType: "json",
+        success: function(data){ retorno(data)},
+        error: function(){ alert("Erro ao carregar PARSE")}
+    });
+}
+/* fim da função genérica */
 
-		for(var i = 0; i < cerveja.length; i++){
-			var divs = document.createElement("div")
+/* ================================= */
 
-			var p1 = document.createElement("h3")
-			var p2 = document.createElement("p")
-			var p3 = document.createElement("h5")
-			var p4 = document.createElement("h5")
+/* carregar tabelas */
+function loadParse(classe){
 
-			p1.appendChild(document.createTextNode("Marca:"+cerveja[i].nome));
-			p2.appendChild(document.createTextNode("Descrição:"+cerveja[i].descricao));
-			p3.appendChild(document.createTextNode("Teor:"+cerveja[i].teor));
-			p4.appendChild(document.createTextNode("Preço:"+cerveja[i].preco));
+        jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas'+classe, function(data) {                        
 
-			divs.appendChild(p1);
-			divs.appendChild(p2);
-			divs.appendChild(p3);
-			divs.appendChild(p4);
-								
-			divs.className = "col3";
+                   for(var i = 0; i < data.results.length; i++){
 
-			var element = document.getElementById("div1");
+                        jQuery("#paineis").append('<div id="col-md-4">'+
+                        	'<div id="DIV_2">'+'<img src='+data.results[i].imagens+' width="130" height="230" id="IMG_3" />'+'</div>'+
+                        	'<div id="DIV_4">'+
+                        	'<h3 id="H3_5">'+'<a id="A_6">'+data.results[i].nome+'</a>'+'</h3>'+
+                        	'<ul id="UL_17">'+
+                        	'<li id="LI_18">'+'<img src='+data.results[i].bandeira+' id="bandeira">'+'<strong id="STRONG_20">'+data.results[i].origem+'</strong>'+'</li>'+
+                        	'<li id="LI_185">'+'<img src="img/icones/cerveja.png" id="bandeira">'+'<strong id="avaliacao">'+data.results[i].estilo+'</strong>'+'</li>'+
+                        	'</ul>'+
+                        	'<p id="P_24">'+'<span id="SPAN_25">'+'R$'+'</span>'+'19'+'<span id="SPAN_26">'+',75'+'</span>'+'</p>'+
+                        	'<button type="button" class="btn btn-info" onclick="openMOdal(\''+data.results[i].objectId+'\')">'+'Info'+'</button>'+'</div>'+'</div>'
+                            );                        
+                	};    
+        });
+};
 
-			element.appendChild(divs);
-		}
+function openMOdal(getID2){
+    jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas/'+getID2, function(data){
+        jQuery("#modal").append('<div id="modalTeste">'+
+                        	'<h3>'+'Descrição'+'</h3>'+
+                        	'<p>'+data.descr+'</p>'+
+                        	'<h4>'+'Teor Alcoólico: '+data.teor+'%'+'</h4>'+
+                        	'</div>');
+
+        $( "#modalTeste" ).dialog({
+	        modal: true,
+	        buttons: {
+	          	Ok: function(){
+	          			$( this ).dialog( "close" )
+	          		},
+	        }
+	    })
+	})
+};                  
+
+$(document).ready(loadParse("/"))
+
+/* fim do carregar tabelas */
+
+/* ================================= */
+
+/* carregar gerenciador */
+function loadTable(a, b){
+
+        jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas', function(data) {
+                            
+
+                   for(var i = 0; i < data.results.length; i++){
+
+                        jQuery("#tabela").append('<tr>'+
+                        	'<td>'+data.results[i].nome+'</td>'+
+                        	'<td>'+data.results[i].updatedAt+'</td>'+
+                        	'<td>'+'<button type="button" onclick="getOne(\''+ data.results[i].objectId +'\')">'+'<img src="img/icones/editar.png" width="35" height="35"  align="center" />'+'</button>'+'</td>'+
+                        	'<td>'+'<button type="button" onclick="confirm(\''+ data.results[i].objectId +'\')">'+'<img src="img/icones/excluir.png" width="35" height="35"  align="center" />'+'</button>'+'</td>'+
+                        	'</tr>'
+                            );
+                        
+                };    
+        });
+};
+
+$(document).ready(loadTable(1, 100))
+
+function getOne(getID2){
+    jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas/'+getID2, function(data){
+        jQuery("#modalEdit").append('<div id="editName" class="field f_100">'+
+                    '<input type="text" name="editName" id="editName" required="required" value="'+data.nome+'">'+ '</div>'+
+                    '<div id="editDescr" class="field f_100">'+
+                    '<textarea rows="5" cols="20" name="editDescr" id="editDescr" required="required">'+data.descr+'</textarea>'+'</div>'+
+                    '<div id="editTeor" class="field f_100">'+
+                    '<input type="number" name="editTeor" id="editTeor" required="required" value="'+data.teor+'">'+'</div>'+
+                    '<div id="editPreco" class="field f_100">'+
+                     '<input type="number" name="editPreco" id="editPreco" required="required" value="'+data.preco+'">'+'</div>'
+                ); 
+    $( "#modalEdit" ).dialog({
+          modal: true,
+          buttons: {
+                Ok: function() {
+
+                    var cervejasNome = $("input[name=editName]").val();
+                    var cervejasDescr = $("textarea[name=editDescr]").val();
+                    var cervejasTeor = parseFloat($("input[name=editTeor]").val());
+                    var cervejasPreco = parseFloat($("input[name=editPreco]").val());
+                    
+                  $.ajax({
+                    beforeSend: function(xhrObj){
+                        xhrObj.setRequestHeader("X-Parse-Application-Id","L7F9ql3DctcnCtoDwah0GGG8GFw8vuWJ6OWFJgNp");
+                        xhrObj.setRequestHeader("X-Parse-REST-API-Key","TLtoYkorgdYipUyLayJnWEjZUuiuhWhTimVzJLg5");                
+                    },
+                    type:"PUT",
+                    url:'https://api.parse.com/1/classes/Cervejas/'+ getID2,
+                    processData:false,
+                    dataType:"json",
+                    data: JSON.stringify({"nome":cervejasNome,
+                                            "descr":cervejasDescr,
+                                            "teor":cervejasTeor,
+                                            "preco":cervejasPreco}),
+                    contentType: "application/json; charset=UTF-8"
+                    })
+         
+                    document.getElementById("tabela").innerHTML = ""
+                    document.getElementById("modalEdit").innerHTML = ""
+                    loadTable(1, 100)
+    
+                    $('#modalEdit').on('hidden', function () {
+                        $('input').val('');
+                    });
+
+                    $( this ).dialog( "close" );
+                },
+                
+                Close: function(){
+                    document.getElementById("modalEdit").innerHTML = ""
+    
+                    $('#modalEdit').on('hidden', function () {
+                        $('input').val('');
+                    });
+
+                    $( this ).dialog( "close" );
+
+                }
+            }
+        })
+    })
+}  
+
+function confirm(getID2){
+	$( "#confirmar" ).dialog({
+	          modal: true,
+	          buttons: {
+	          	Sim: function(){
+	          			jQuerySubmit("DELETE",'https://api.parse.com/1/classes/Cervejas/'+ getID2, function(data){
+        				document.getElementById("tabela").innerHTML = ""
+        				loadTable(1, 100)
+    					})
+
+	          			$( this ).dialog( "close" )
+	          		},
+	          	Não: function(){$(this).dialog("close")}
+	          }
+	    });
+}
+/* fim carregar gerenciador */
+
+/* ================================= */
+
+/* modal cadastrar */
+function cadastrar(){
+	$( "#modalCadastro" ).dialog({
+	          modal: true,
+	          buttons: {
+	          	Cadastrar:function(){
+                        var cervejasNome = $("input[name=enterName]").val();
+                        var cervejasDescr = $("textarea[name=enterDescr]").val();
+                        var cervejasTeor = parseFloat($("input[name=enterTeor]").val());
+                        var cervejasPreco = parseFloat($("input[name=enterPreco]").val());
+                       
+                        $.ajax({
+
+                            beforeSend: function(xhrObj){
+                                xhrObj.setRequestHeader("X-Parse-Application-Id","L7F9ql3DctcnCtoDwah0GGG8GFw8vuWJ6OWFJgNp");
+                                xhrObj.setRequestHeader("X-Parse-REST-API-Key","TLtoYkorgdYipUyLayJnWEjZUuiuhWhTimVzJLg5"); 
+                            },
+                             
+                            type: "POST",
+                            data: JSON.stringify({"nome":cervejasNome,
+                                                    "descr":cervejasDescr,
+                                                    "teor":cervejasTeor,
+                                                    "preco":cervejasPreco}),
+                            url: 'https://api.parse.com/1/classes/Cervejas',
+                            dataType: "json",
+                            contentType: "application/json; charset=UTF-8"
+
+                            })
+                        document.getElementById("tabela").innerHTML = ""
+                        document.getElementById("modalCadastro").innerHTML = ""
+                        loadTable(1, 100)
+        
+                        $('#modalEdit').on('hidden', function () {
+                        	$('input').val('');
+                    	});
+
+
+                        $( this ).dialog( "close" )
+                    },
+	          	Close: function(){
+                    document.getElementById("modalEdit").innerHTML = ""
+    
+                    $('#modalEdit').on('hidden', function () {
+                        $('input').val('');
+                    });
+
+                    $( this ).dialog( "close" )
+	            }
+	        }
+	})
+}
+/* fim modal cadastrar */
+
+/* ================================= */
+
+/* filtro bandeiras*/
+
+function filtro(bandeira){
+	var colocar = '/?where={"origem":"'+bandeira+'"}'
+	document.getElementById("paineis").innerHTML = ""
+	loadParse(colocar)
+
+}

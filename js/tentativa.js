@@ -173,6 +173,8 @@ function getValue(){
 
 $(document).ready(loadParse(1, 100))
 
+$(".cs-text-cut").lettering('words');
+
 /* prompt de cadastro */
 
 

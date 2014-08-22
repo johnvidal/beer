@@ -1,258 +1,348 @@
-/*
-      Responsive Aeon Grid System v1.0.0
-      Designed & Built by Fernando Monteiro, http://www.newaeonweb.com.br 
-      Licensed under MIT license, http://opensource.org/licenses/mit-license.php
-      
-      Base stylesheet with CSS Reset, grid and progressive responsiveness
-      */
-
-/* Simple reset just for Body element 
-  ============================================================================================== */
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* Container Bases 
-  ============================================================================================== */
-
-.container {
-  margin: 0 auto;
-  width: 100%;
-}
-.content {
-  max-width: 100%;
-  margin: 0 10px;
-}
-/* Grid Variable 
-  ============================================================================================== */
-[class*="col"] {
-  display: inline;
-  float: left;
-  position: relative;
-  margin-left: 1%;
-  margin-right: 1%;
-  height: 400px;
-}
-[class*="col"]:last-child {
-  margin-right: 0;
-}
-/* General Grid 
-  ============================================================================================== */
-
-.col1 {
-  width: 6.333%;
-}
-.col2 {
-  width: 14.667%;
-}
-.col3 {
-  width: 23%;
-}
-.col4 {
-  width: 31.333%;
-}
-.col5 {
-  width: 39.667%;
-}
-.col6 {
-  width: 48%;
-}
-.col7 {
-  width: 56.333%;
-}
-.col8 {
-  width: 64.667%;
-}
-.col9 {
-  width: 73%;
-}
-.col10 {
-  width: 81.333%;
-}
-.col11 {
-  width: 89.667%;
-}
-.col12 {
-  margin-left: 0;
-  width: 100%;
-}
-/* General small screen Mobile 
-  ============================================================================================== */
-
-@media handheld, only screen and (max-width: 768px) {
-  body {
-    font-size: 1.0em;
-    -webkit-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-  }
-  .content {
-    width: 100%;
-    min-width: 0;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .col1,
-  .col2,
-  .col3,
-  .col4,
-  .col5,
-  .col6,
-  .col7,
-  .col8,
-  .col9,
-  .col10,
-  .col11,
-  .col12 {
-    width: 98%;
-  }
-}
-/* Clear Helpers 
-  ============================================================================================== */
-
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
-/* Media - Fluid Images - Video 
-  ============================================================================================== */
-
-figure {
-  margin: 0;
-}
-object,
-embed,
-video {
-  max-width: 100%;
-  _width: 100%;
-}
-/* Fluid images */
-
-img {
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-}
-/* Improve IE's resizing of images */
-
-svg:not(:root) {
-  overflow: hidden;
-}
-/* Correct IE9 overflow */
-
-img {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  max-width: 100%;
-  _width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-img[src*="maps.gstatic.com"],
-img[src*="googleapis.com"] {
-  max-width: none;
-}
+@import 'grid.css';
 
 
+.container_header{
+  margin-bottom: 5px;
+}
 
+.container_body{
+  margin-top: 5px;
+}
 
-@import url(http://fonts.googleapis.com/css?family=Carme);
-@import url(http://fonts.googleapis.com/css?family=Aclonica);
-
+header{
+  text-align: center;
+  text-transform: uppercase;
+  color: red;
+}
 
 body{
   margin-right: auto;
   margin-left: auto;
   width: 940px;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 14px;
+  background-color: #ccc;
 }
 
-.container{
-	font-size: 30px;
-	text-align: center;
-	text-transform: uppercase;
-	font-family: 'Aclonica', sans-serif;
-	color: red;
-}
-.titulo{
-	font-size: 20px;
-	color: black;
-}
-
-.paineis{
-	font-family: 'Carme', sans-serif;
-	color: grey;
-}
-
-h2{
-	font-family: 'Aclonica', sans-serif;
-	color: red;
-	text-align: center;
-}
-
-h3{
-	font-family: 'Carme', sans-serif;
-	font-size: 20px;
-	font-style: italic;
-	color: black;
-
-}
-
-footer{
-	font-family: 'Carme', sans-serif;
-	font-size: 15px;
-	text-align: center;
-}
-
-.buttonCadastro{
-  float:right;
-}
-
-.buttonDel{
-  position: absolute;
-  top: 370px;
-  right: 10px;
-}
-
-.buttonEdit{
-  position: absolute;
-  top: 370px;
-  right: 68px;
-}
-
-#modalEdit{
+#editar{
     display: none;
 }
 
-#modalCadastro {
-  display: none;
+#modalTeste{
+    display: none;
 }
+
+#confirmar{
+    display: none;
+}
+
+#cadastrar{
+    display: none;
+}
+
+#modalCadastro{
+    display: none;
+}
+
+
+#col-md-4 {
+    float: left;
+    height: 300px;
+    width: 300px;
+    perspective-origin: 170px 180px;
+    transform-origin: 170px 180px;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    border-radius: 8px 8px 8px 8px;
+    font: normal normal normal 16px/16px 'Times New Roman';
+    margin: 0px 0px 20px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}/*#DIV_1*/
+
+#DIV_2 {
+    float: left;
+    height: 170px;
+    position: relative;
+    width: 130px;
+    perspective-origin: 80px 136.5px;
+    transform-origin: 80px 136.5px;
+    font: normal normal normal 16px/16px 'Times New Roman';
+}/*#DIV_2*/
+
+#IMG_3 {
+    height: 130px;
+    width: 170px;
+    perspective-origin: 65px 115px;
+    transform-origin: 65px 115px;
+    font: normal normal normal 16px/16px 'Times New Roman';
+    margin: 40px 0px 0px 20px;
+}/*#IMG_3*/
+
+#DIV_4 {
+    float: right;
+    height: 300px;
+    width: 130px;
+    perspective-origin: 80px 146px;
+    transform-origin: 80px 146px;
+    font: normal normal normal 16px/16px 'Times New Roman';
+    margin-right: 8px;
+}/*#DIV_4*/
+
+#H3_5 {
+    height: 48px;
+    width: 160px;
+    perspective-origin: 80px 24px;
+    transform-origin: 80px 24px;
+    font: normal normal normal 20px/24px Oswald, sans-serif;
+    margin: 40px 0px 15px;
+    text-align: left;
+}/*#H3_5*/
+
+#A_6 {
+    color: rgb(51, 51, 51);
+    text-decoration: none solid rgb(51, 51, 51);
+    border: 0px none rgb(51, 51, 51);
+    font: normal normal normal 20px/24px Oswald, sans-serif;
+    outline: rgb(51, 51, 51) none 0px;
+}/*#A_6*/
+
+#UL_17 {
+    float: left;
+    height: 63px;
+    width: 121px;
+    perspective-origin: 60.5px 31.5px;
+    transform-origin: 60.5px 31.5px;
+    font: normal normal normal 16px/16px 'Times New Roman';
+    list-style: none outside none;
+    margin: 0px;
+    padding: 0px;
+}/*#UL_17*/
+
+#LI_18 {
+    clear: both;
+    color: rgb(102, 102, 102);
+    float: left;
+    height: 21px;
+    text-decoration: none solid rgb(102, 102, 102);
+    width: 121px;
+    perspective-origin: 60.5px 10.5px;
+    transform-origin: 60.5px 10.5px;
+    border: 0px none rgb(102, 102, 102);
+    font: normal normal normal 12px/15.600000381469727px Arial, Helvetica, sans-serif;
+    list-style: none outside none;
+    margin: 0px 0px 10px;
+    outline: rgb(102, 102, 102) none 0px;
+}/*#LI_18*/
+
+/*--#SPAN_19 {
+    background-position: -68px -504px;
+    color: rgb(102, 102, 102);
+    display: block;
+    float: left;
+    height: 21px;
+    text-align: left;
+    text-decoration: none solid rgb(102, 102, 102);
+    width: 22px;
+    perspective-origin: 11px 10.5px;
+    transform-origin: 11px 10.5px;
+    background: rgba(0, 0, 0, 0) url(http://www.haveanicebeer.com.br/template-resources/img/spr/spr-main.png) no-repeat scroll -68px -504px / auto padding-box border-box;
+    border: 0px none rgb(102, 102, 102);
+    font: normal normal normal 12px/15.600000381469727px Arial, Helvetica, sans-serif;
+    list-style: none outside none;
+    margin: 0px 10px 0px 0px;
+    outline: rgb(102, 102, 102) none 0px;
+}--*/
+
+#bandeira{
+    display: block;
+    float: left;
+    height: 21px;
+    width: 22px;
+    margin: 0px 10px 0px 0px;
+}
+
+#STRONG_20 {
+    color: rgb(102, 102, 102);
+    display: block;
+    float: left;
+    height: 15px;
+    text-align: left;
+    text-decoration: none solid rgb(102, 102, 102);
+    width: 89px;
+    perspective-origin: 44.5px 7.5px;
+    transform-origin: 44.5px 7.5px;
+    border: 0px none rgb(102, 102, 102);
+    font: normal normal normal 12px/15.600000381469727px Arial, Helvetica, sans-serif;
+    list-style: none outside none;
+    margin: 3px 0px 0px;
+    outline: rgb(102, 102, 102) none 0px;
+}/*#STRONG_20*/
+
+.avaliacao{
+  font: Arial, Helvetica, sans-serif;
+  list-style: none outside none;
+}
+
+#P_24 {
+    color: rgb(140, 0, 25);
+    float: left;
+    height: 36px;
+    text-decoration: none solid rgb(140, 0, 25);
+    width: 160px;
+    perspective-origin: 80px 18px;
+    transform-origin: 80px 18px;
+    border: 0px none rgb(140, 0, 25);
+    font: normal normal normal 27px/32.400001525878906px Oswald, sans-serif;
+    margin: 5px 0px;
+    outline: rgb(140, 0, 25) none 0px;
+}/*#P_24*/
+
+#SPAN_25, #SPAN_26 {
+    color: rgb(140, 0, 25);
+    text-decoration: none solid rgb(140, 0, 25);
+    border: 0px none rgb(140, 0, 25);
+    font: normal normal normal 18px/32.400001525878906px Oswald, sans-serif;
+    outline: rgb(140, 0, 25) none 0px;
+}
+
+#DIV_4.btn-info {
+  position: absolute;
+  top: 300px;
+  right: 78px;
+}
+
+.btn-primary{
+  position: absolute;
+  top: 370px;
+  right: 10px;  
+}
+
+/*header*/
+
+#NAV_1 {
+    float: center;
+    height: 47px;
+    width: 1000px;
+    perspective-origin: 500px 23.5px;
+    transform-origin: 500px 23.5px;
+    font: normal normal normal 16px/16px 'Times New Roman';
+}/*#NAV_1*/
+
+#SPAN_2 {
+    background-position: 0px -24px;
+    display: block;
+    float: left;
+    height: 47px;
+    width: 30px;
+    perspective-origin: 15px 23.5px;
+    transform-origin: 15px 23.5px;
+    background: rgba(0, 0, 0, 0) url(http://www.haveanicebeer.com.br/template-resources/img/spr/spr-main.png) no-repeat scroll 0px -24px / auto padding-box border-box;
+    font: normal normal normal 16px/16px 'Times New Roman';
+}/*#SPAN_2*/
+
+#UL_3 {
+    float: left;
+    height: 39px;
+    position: relative;
+    width: 880px;
+    z-index: 1;
+    perspective-origin: 469px 20.5px;
+    transform-origin: 469px 20.5px;
+    background: rgb(241, 190, 80) none repeat scroll 0% 0% / auto padding-box border-box;
+    border-bottom: 2px solid rgb(208, 162, 70);
+    font: normal normal normal 16px/16px 'Times New Roman';
+    list-style: none outside none;
+    margin: 0px;
+    padding: 0px;
+}/*#UL_3*/
+
+#LI_4 {
+    float: left;
+    height: 39px;
+    position: relative;
+    width: 77px;
+    z-index: 1;
+    perspective-origin: 39px 19.5px;
+    transform-origin: 39px 19.5px;
+    border-right: 1px dashed rgb(208, 162, 70);
+    font: normal normal 500 14px/normal Oswald, sans-serif;
+    list-style: none outside none;
+}/*#LI_4*/
+
+#A_5 {
+    color: rgb(51, 51, 51);
+    display: block;
+    float: left;
+    height: 29px;
+    text-align: left;
+    text-decoration: none solid rgb(51, 51, 51);
+    width: 25px;
+    perspective-origin: 38.5px 19.5px;
+    transform-origin: 38.5px 19.5px;
+    border: 0px none rgb(51, 51, 51);
+    font: normal normal 500 14px/normal Oswald, sans-serif;
+    list-style: none outside none;
+    outline: rgb(51, 51, 51) none 0px;
+    padding: 10px 26px 0px;
+}/*#A_5*/
+
+#LI_10 {
+    float: left;
+    height: 39px;
+    position: relative;
+    width: 116px;
+    z-index: 1;
+    perspective-origin: 58.5px 19.5px;
+    transform-origin: 58.5px 19.5px;
+    border-right: 1px dashed rgb(208, 162, 70);
+    font: normal normal 500 14px/normal Oswald, sans-serif;
+    list-style: none outside none;
+}/*#LI_10*/
+
+#A_11 {
+    color: rgb(51, 51, 51);
+    display: block;
+    float: left;
+    height: 29px;
+    text-align: left;
+    text-decoration: none solid rgb(51, 51, 51);
+    width: 64px;
+    perspective-origin: 58px 19.5px;
+    transform-origin: 58px 19.5px;
+    border: 0px none rgb(51, 51, 51);
+    font: normal normal 500 14px/normal Oswald, sans-serif;
+    list-style: none outside none;
+    outline: rgb(51, 51, 51) none 0px;
+    padding: 10px 26px 0px;
+}/*#A_11*/
+
+
+#SPAN_21 {
+    background-position: -44px -24px;
+    display: block;
+    float: left;
+    height: 47px;
+    width: 30px;
+    perspective-origin: 15px 23.5px;
+    transform-origin: 15px 23.5px;
+    background: rgba(0, 0, 0, 0) url(http://www.haveanicebeer.com.br/template-resources/img/spr/spr-main.png) no-repeat scroll -44px -24px / auto padding-box border-box;
+    font: normal normal normal 16px/16px 'Times New Roman';
+}/*#SPAN_21*/
+
+.circular {
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+  align-content: right;
+  }
+
+.circular img {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  }
+/*header*/
 
 
 /* formulario css */
@@ -344,4 +434,6 @@ footer{
   visibility: hidden;
 }
 
-
+.ui-dialog-titlebar{
+  visibility: hidden;
+}
