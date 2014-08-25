@@ -30,10 +30,10 @@ function loadParse(classe){
                         	'<div id="DIV_4">'+
                         	'<h3 id="H3_5">'+'<a id="A_6">'+data.results[i].nome+'</a>'+'</h3>'+
                         	'<ul id="UL_17">'+
-                        	'<li id="LI_18">'+'<img src='+data.results[i].bandeira+' id="bandeira">'+'<strong id="STRONG_20">'+data.results[i].origem+'</strong>'+'</li>'+
+                        	'<li id="LI_18">'+'<strong id="STRONG_20" class="origem">'+data.results[i].origem+'</strong>'+'</li>'+
                         	'<li id="LI_185">'+'<img src="img/icones/cerveja.png" id="bandeira">'+'<strong id="avaliacao">'+data.results[i].estilo+'</strong>'+'</li>'+
                         	'</ul>'+
-                        	'<p id="P_24">'+'<span id="SPAN_25">'+'R$'+'</span>'+'19'+'<span id="SPAN_26">'+',75'+'</span>'+'</p>'+
+                        	'<p id="P_24">'+'<span id="SPAN_25">'+'R$'+data.results[i].preco+'</span>'+'</p>'+
                         	'<button type="button" class="btn btn-info" onclick="openMOdal(\''+data.results[i].objectId+'\')">'+'Info'+'</button>'+'</div>'+'</div>'
                             );                        
                 	};    
@@ -178,6 +178,8 @@ function cadastrar(){
 	          	Cadastrar:function(){
                         var cervejasNome = $("input[name=enterName]").val();
                         var cervejasDescr = $("textarea[name=enterDescr]").val();
+                        var cervejasEstilo = $("select[name=enterEstilo]").val();
+                        var cervejasOrigem = $("select[name=enterLocal]").val();
                         var cervejasTeor = parseFloat($("input[name=enterTeor]").val());
                         var cervejasPreco = parseFloat($("input[name=enterPreco]").val());
                        
@@ -191,7 +193,9 @@ function cadastrar(){
                             type: "POST",
                             data: JSON.stringify({"nome":cervejasNome,
                                                     "descr":cervejasDescr,
+                                                    "estilo":cervejasEstilo,
                                                     "teor":cervejasTeor,
+                                                    "origem":cervejasOrigem,
                                                     "preco":cervejasPreco}),
                             url: 'https://api.parse.com/1/classes/Cervejas',
                             dataType: "json",

@@ -162,7 +162,6 @@ body{
 }
 
 #STRONG_20 {
-    color: rgb(102, 102, 102);
     display: block;
     float: left;
     height: 15px;
@@ -172,11 +171,15 @@ body{
     perspective-origin: 44.5px 7.5px;
     transform-origin: 44.5px 7.5px;
     border: 0px none rgb(102, 102, 102);
-    font: normal normal normal 12px/15.600000381469727px Arial, Helvetica, sans-serif;
     list-style: none outside none;
     margin: 3px 0px 0px;
     outline: rgb(102, 102, 102) none 0px;
 }/*#STRONG_20*/
+
+.origem{
+    font: 12px/130% Arial, Helvetica, sans-serif;
+    color: #666;
+}
 
 .avaliacao{
   font: Arial, Helvetica, sans-serif;
@@ -193,12 +196,13 @@ body{
     transform-origin: 80px 18px;
     border: 0px none rgb(140, 0, 25);
     font: normal normal normal 27px/32.400001525878906px Oswald, sans-serif;
-    margin: 5px 0px;
+    margin: 0px 0px;
     outline: rgb(140, 0, 25) none 0px;
 }/*#P_24*/
 
 #SPAN_25, #SPAN_26 {
     color: rgb(140, 0, 25);
+    text-align: left;
     text-decoration: none solid rgb(140, 0, 25);
     border: 0px none rgb(140, 0, 25);
     font: normal normal normal 18px/32.400001525878906px Oswald, sans-serif;
