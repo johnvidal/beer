@@ -536,3 +536,8 @@ body{
     text-decoration: none;
     text-align: center;
 }
+
+footer {
+    position: absolute;
+    top: 1427px;
+}
