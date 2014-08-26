@@ -490,3 +490,18 @@ body{
 #editPreco label{
     display: block;
 }
+
+#modalEdit h1 {
+    font-size: 25px;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom:1px solid #E4E4E4;
+    margin: -10px -15px 30px -10px;;
+    color: #888;
+}
+
+#modalEdit h1>span {
+    display: block;
+    font-size: 11px;
+}
+

@@ -93,7 +93,10 @@ function chooses(){
 
 function getOne(getID2){
     jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas/'+getID2, function(data){
-        jQuery("#modalEdit").append('<div id="editName" class="field f_100">'+
+    	jQuery("#modalEdit").append('<h1>Edição de Cerveja'+'<span>'+'Edite o que quiser'+'</span>'+'</h1>'+
+
+
+        			'<div id="editName" class="field f_100">'+
         			'<label id="editName">'+'Nome'+'</label>'+
                     '<input type="text" name="editName" id="editName" required="required" value="'+data.nome+'">'+
                     '</div>'+
