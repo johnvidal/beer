@@ -376,6 +376,7 @@ body{
 }
 .formulario label {
     display: block;
+    float: top;
     margin: 0px;
 }
 .formulario label>span {
@@ -440,4 +441,28 @@ body{
 
 .ui-dialog-titlebar{
   visibility: hidden;
+}
+
+#editName{
+    margin-top: 2px;
+}
+
+#editDescr{
+    margin-top: 2px;
+}
+
+#editEstilo{
+    margin-top: 2px;
+}
+
+#editLocal{
+    margin-top: 2px;
+}
+
+#editTeor{
+    margin-top: 2px;
+}
+
+#editPreco{
+    margin-top: 2px;
 }

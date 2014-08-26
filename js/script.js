@@ -87,16 +87,41 @@ function loadTable(a, b){
 
 $(document).ready(loadTable(1, 100))
 
+function chooses(){
+
+}
+
 function getOne(getID2){
     jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas/'+getID2, function(data){
         jQuery("#modalEdit").append('<div id="editName" class="field f_100">'+
-                    '<input type="text" name="editName" id="editName" required="required" value="'+data.nome+'">'+ '</div>'+
+                    '<input type="text" name="editName" id="editName" required="required" value="'+data.nome+'">'+
+                    '</div>'+
+
                     '<div id="editDescr" class="field f_100">'+
-                    '<textarea rows="5" cols="20" name="editDescr" id="editDescr" required="required">'+data.descr+'</textarea>'+'</div>'+
+                    '<textarea rows="5" cols="20" name="editDescr" id="editDescr" required="required">'+data.descr+'</textarea>'+
+                    '</div>'+
+
+                    '<div id="editEstilo" class="field f_100">'+
+                    '<select name="editEstilo" id="editEstilo">'+
+                    '<option value="Large">Large</option>'+'<option value="Ale">Ale</option>'+'<option value="Lambics">Lambics</option>'+
+                    '<option value="Trapista">Trapista</option>'+'<option value="Abbey">Abbey</option>'+'<option value="Malt Liquor">Malt Liquor</option>'+
+                    '</select>'+
+                    '</div>'+
+
+                    '<div id="editLocal" class="field f_100">'+
+                    '<select name="editLocal" id="editLocal">'+
+                    '<option value="Brasil">Brasil</option>'+'<option value="México">México</option>'+'<option value="Irlanda">Irlanda</option>'+'<option value="Holanda">Holanda</option>'+
+                    '<option value="Estados Unidos">Estados Unidos</option>'+'<option value="Bélgica">Bélgica</option>'+'<option value="Alemanha">Alemanha</option>'+'<option value="Dinamarca">Dinamarca</option>'+
+                    '</select>'+
+                    '</div>'+
+
                     '<div id="editTeor" class="field f_100">'+
-                    '<input type="number" name="editTeor" id="editTeor" required="required" value="'+data.teor+'">'+'</div>'+
+                    '<input type="number" name="editTeor" id="editTeor" required="required" value="'+data.teor+'">'+
+                    '</div>'+
+
                     '<div id="editPreco" class="field f_100">'+
-                     '<input type="number" name="editPreco" id="editPreco" required="required" value="'+data.preco+'">'+'</div>'
+                    '<input type="number" name="editPreco" id="editPreco" required="required" value="'+data.preco+'">'+
+                    '</div>'
                 ); 
     $( "#modalEdit" ).dialog({
           modal: true,
@@ -105,6 +130,8 @@ function getOne(getID2){
 
                     var cervejasNome = $("input[name=editName]").val();
                     var cervejasDescr = $("textarea[name=editDescr]").val();
+                    var cervejasEstilo = $("select[name=editEstilo]").val();
+                    var cervejasOrigem = $("select[name=editLocal]").val();
                     var cervejasTeor = parseFloat($("input[name=editTeor]").val());
                     var cervejasPreco = parseFloat($("input[name=editPreco]").val());
                     
@@ -119,7 +146,9 @@ function getOne(getID2){
                     dataType:"json",
                     data: JSON.stringify({"nome":cervejasNome,
                                             "descr":cervejasDescr,
+                                            "estilo":cervejasEstilo,
                                             "teor":cervejasTeor,
+                                            "origem":cervejasOrigem,
                                             "preco":cervejasPreco}),
                     contentType: "application/json; charset=UTF-8"
                     })
