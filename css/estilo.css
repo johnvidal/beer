@@ -447,22 +447,46 @@ body{
     margin-top: 2px;
 }
 
+#editName label{
+    display: block;
+}
+
 #editDescr{
     margin-top: 2px;
+}
+
+#editDescr label{
+    display: block;
 }
 
 #editEstilo{
     margin-top: 2px;
 }
 
+#editEstilo label{
+    display: block;
+}
+
 #editLocal{
     margin-top: 2px;
+}
+
+#editLocal label{
+    display: block;
 }
 
 #editTeor{
     margin-top: 2px;
 }
 
+#editTeor label{
+    display: block;
+}
+
 #editPreco{
     margin-top: 2px;
+}
+
+#editPreco label{
+    display: block;
 }

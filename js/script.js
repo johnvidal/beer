@@ -94,14 +94,17 @@ function chooses(){
 function getOne(getID2){
     jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas/'+getID2, function(data){
         jQuery("#modalEdit").append('<div id="editName" class="field f_100">'+
+        			'<label id="editName">'+'Nome'+'</label>'+
                     '<input type="text" name="editName" id="editName" required="required" value="'+data.nome+'">'+
                     '</div>'+
 
                     '<div id="editDescr" class="field f_100">'+
+                    '<label for="editName">'+'Descrição'+'</label>'+
                     '<textarea rows="5" cols="20" name="editDescr" id="editDescr" required="required">'+data.descr+'</textarea>'+
                     '</div>'+
 
                     '<div id="editEstilo" class="field f_100">'+
+                    '<label for="editName">'+'Estilo'+'</label>'+
                     '<select name="editEstilo" id="editEstilo">'+
                     '<option value="Large">Large</option>'+'<option value="Ale">Ale</option>'+'<option value="Lambics">Lambics</option>'+
                     '<option value="Trapista">Trapista</option>'+'<option value="Abbey">Abbey</option>'+'<option value="Malt Liquor">Malt Liquor</option>'+
@@ -109,6 +112,7 @@ function getOne(getID2){
                     '</div>'+
 
                     '<div id="editLocal" class="field f_100">'+
+                    '<label for="editName">'+'Origem'+'</label>'+
                     '<select name="editLocal" id="editLocal">'+
                     '<option value="Brasil">Brasil</option>'+'<option value="México">México</option>'+'<option value="Irlanda">Irlanda</option>'+'<option value="Holanda">Holanda</option>'+
                     '<option value="Estados Unidos">Estados Unidos</option>'+'<option value="Bélgica">Bélgica</option>'+'<option value="Alemanha">Alemanha</option>'+'<option value="Dinamarca">Dinamarca</option>'+
@@ -116,10 +120,12 @@ function getOne(getID2){
                     '</div>'+
 
                     '<div id="editTeor" class="field f_100">'+
+                    '<label for="editName">'+'Teor Alcoólico'+'</label>'+
                     '<input type="number" name="editTeor" id="editTeor" required="required" value="'+data.teor+'">'+
                     '</div>'+
 
                     '<div id="editPreco" class="field f_100">'+
+                    '<label for="editName">'+'Preço'+'</label>'+
                     '<input type="number" name="editPreco" id="editPreco" required="required" value="'+data.preco+'">'+
                     '</div>'
                 ); 
