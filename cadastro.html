@@ -13,125 +13,140 @@
     </head>
 
     <body>
-        <header class="container_header">
-            <h1>Holy Beer</h1>
-            <p class="titulo"> A cerveja de cada dia.</p>
-            <nav id="NAV_1">
-                <span id="SPAN_2"></span>
-                <ul id="UL_3">
-                    <li id="LI_4">
-                        <a href="index.html" title="Loja" id="A_5">Home</a>
-                    </li>
-                    <li id="LI_10">
-                        <a href="cadastro.html" title="Minha HNB" id="A_11">Cadastro</a>
-                    </li>
 
-                    <input type="image" src="img/button.png" width="35" height="35" align="right" alt="Submit" onclick="cadastrar()">
+        <div class="body" align="center">
+            <header class="container_header">
+                <h1>Holy Beer</h1>
+                <p class="titulo"> A cerveja de cada dia.</p>
+                <nav id="NAV_1">
+                    <span id="SPAN_2"></span>
+                    <ul id="UL_3">
+                        <li id="LI_4">
+                            <a href="index.html" title="Loja" id="A_5">Home</a>
+                        </li>
+                        <li id="LI_10">
+                            <a href="cadastro.html" title="Minha HNB" id="A_11">Cadastro</a>
+                        </li>
 
-                </ul><span id="SPAN_21"></span>
-            </nav>
-        </header>
+                        <input type="image" src="img/button.png" width="35" height="35" align="right" alt="Submit" onclick="cadastrar()">
 
-        <div align="center" id="col-md-12">
-          <table class="table" id="table">
-            <thead>  
-              <tr>  
-                <th>Cervejas</th>  
-                <th>Ultima Edição</th>  
-                <th>Editar</th>  
-                <th>Excluir</th>  
-              </tr>  
-            </thead>
+                    </ul><span id="SPAN_21"></span>
+                </nav>
+            </header>
 
-            <tbody id="tabela">
+            <div align="center" id="col-md-12">
+              <table class="table" id="table">
+                <thead>  
+                  <tr>  
+                    <th>Cervejas</th>  
+                    <th>Ultima Edição</th>  
+                    <th>Editar</th>  
+                    <th>Excluir</th>  
+                  </tr>  
+                </thead>
 
-            </tbody>
+                <tbody id="tabela">
 
-          </table>
-        </div>
+                </tbody>
 
-        <div id="modalCadastro">
-            <form class="formulario" method="post" novalidate="">
+              </table>
+            </div>
 
-                <h1>Cadastro de Cerveja
-                    <span>Preencha todos os campos abaixo</span>
-                </h1>
-                       
-                       
-                <div id="enterName-container" class="field f_100">
-                    <label for="enterName">
-                        Nome
-                    </label>
-                    <input type="text" name="enterName" id="enterName" required="required">
-                </div>
-                       
-                       
-                <div id="enterDescr-container" class="field f_100">
-                    <label for="enterDescr">
-                        Descrição
-                    </label>
-                    <textarea rows="5" cols="20" name="enterDescr" id="enterDescr" required="required"></textarea>
-                </div>
-                
-                <div id="enterEstilo" class="field f_100">    
+            <div id="modalCadastro">
+                <form class="formulario" method="post" novalidate="">
+
+                    <h1>Cadastro de Cerveja
+                        <span>Preencha todos os campos abaixo</span>
+                    </h1>
+                           
+                           
+                    <div id="enterName-container" class="field f_100">
+                        <label for="enterName">
+                            Nome
+                        </label>
+                        <input type="text" name="enterName" id="enterName" required="required">
+                    </div>
+                           
+                           
+                    <div id="enterDescr-container" class="field f_100">
+                        <label for="enterDescr">
+                            Descrição
+                        </label>
+                        <textarea rows="5" cols="20" name="enterDescr" id="enterDescr" required="required"></textarea>
+                    </div>
                     
-                    <label for="enterEstilo">
-                        Estilo
-                    </label>
+                    <div id="enterEstilo" class="field f_100">    
+                        
+                        <label for="enterEstilo">
+                            Estilo
+                        </label>
 
-                    <select name="enterEstilo" id="enterEstilo"> 
-                        <option value="Large">Large</option>
-                        <option value="Ale">Ale</option>
-                        <option value="Lambics">Lambics</option>
-                        <option value="Trapista">Trapista</option>
-                        <option value="Abbey">Abbey</option>
-                        <option value="Malt Liquor">Malt Liquor</option>
-                    </select>
-                </div>
+                        <select name="enterEstilo" id="enterEstilo"> 
+                            <option value="Large">Large</option>
+                            <option value="Ale">Ale</option>
+                            <option value="Lambics">Lambics</option>
+                            <option value="Trapista">Trapista</option>
+                            <option value="Abbey">Abbey</option>
+                            <option value="Malt Liquor">Malt Liquor</option>
+                        </select>
+                    </div>
 
-                <div id="enterLocal" class="field f_100">
+                    <div id="enterLocal" class="field f_100">
 
-                    <label for="enterLocal">
-                        Origem
-                    </label>
+                        <label for="enterLocal">
+                            Origem
+                        </label>
 
-                    <select name="enterLocal" id="enterLocal"> 
-                        <option value="Brasil">Brasil</option>
-                        <option value="México">México</option>
-                        <option value="Irlanda">Irlanda</option>
-                        <option value="Holanda">Holanda</option>
-                        <option value="Estados Unidos">Estados Unidos</option>
-                        <option value="Bélgica">Bélgica</option>
-                        <option value="Alemanha">Alemanha</option>
-                        <option value="Dinamarca">Dinamarca</option>
-                    </select>
-                </div>
-                       
-                <div id="enterTeor-container" class="field f_100">
-                    <label for="enterTeor">
-                        Teor Alcoólico
-                    </label>
-                    <input type="number" name="enterTeor" id="enterTeor" required="required">
-                </div>
-                       
-                       
-                <div id="enterPreco-container" class="field f_100">
-                    <label for="enterPreco">
-                        Preço
-                    </label>
-                    <input type="number" name="enterPreco" id="enterPreco" required="required">
-                </div>
-                             
-            </form>
+                        <select name="enterLocal" id="enterLocal"> 
+                            <option value="Brasil">Brasil</option>
+                            <option value="México">México</option>
+                            <option value="Irlanda">Irlanda</option>
+                            <option value="Holanda">Holanda</option>
+                            <option value="Estados Unidos">Estados Unidos</option>
+                            <option value="Bélgica">Bélgica</option>
+                            <option value="Alemanha">Alemanha</option>
+                            <option value="Dinamarca">Dinamarca</option>
+                        </select>
+                    </div>
+                           
+                    <div id="enterTeor-container" class="field f_100">
+                        <label for="enterTeor">
+                            Teor Alcoólico
+                        </label>
+                        <input type="number" name="enterTeor" id="enterTeor" required="required">
+                    </div>
+                           
+                           
+                    <div id="enterPreco-container" class="field f_100">
+                        <label for="enterPreco">
+                            Preço
+                        </label>
+                        <input type="number" name="enterPreco" id="enterPreco" required="required">
+                    </div>
+                                 
+                </form>
+            </div>
+
+            <div id="modalEdit" title="Teste">
+
+            </div>
+
+            <div id="confirmar">
+                <p>Deseja excluir essa cerveja?</p>
+            </div>
         </div>
 
-        <div id="modalEdit" title="Teste">
-        
-        </div>
+        <footer id="rodape">
+            <div id="rodape div2">
+                <h4 id="endereco"><strong>Endereço</strong></h4>
+                <div id="info">
+                    <p>Av. Alberto Barbeta<br>
+                    Numero: 2280<br>
+                    Bairro: Jardim Panorama II</p>
+                </div>
+            </div>            
+        </footer>
 
-        <div id="confirmar">
-            <p>Deseja excluir essa cerveja?</p>
-        </div>
 
     </body>
 
