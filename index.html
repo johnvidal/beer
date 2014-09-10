@@ -1,71 +1,141 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Holy Beer</title>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<!doctype html>
+<html lang="en" ng-app="bebidasApp">
+	
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="description" content="Holy Beer">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Holy Beer</title>
+	    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/script.js"></script>
-        <link rel="stylesheet" href="css/estilo.css">
-    </head>
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="css/style.css">
+	</head>
+	
+	<body ng-controller="bebidasCtrl">
+		<nav class="navbar navbar-inverse" role="navigation">
+ 
+	        <div class="navbar-header">
+		        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bar1">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		        </button>
+		        <a class="navbar-brand" href="#" ng-click="definirPagina(0)">HOLY BEER</a>
+	        </div>
+	 
+	      <div class="collapse navbar-collapse" id="bar1">
+	        <ul class="nav navbar-nav navbar-right">
+	        	<li ng-click="definirPagina(1)"><a>Controler</a></li>
+		        <li class="dropdown">
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paises<b class="caret"></b></a>
+		            <ul class="dropdown-menu" ng-model="orderProp">
+			            <li value="name"><a href="#">Alemanha</a></li>
+			            <li><a href="#">Brasil</a></li>
+			            <li><a href="#">Bélgica</a></li>
+			            <li><a href="#">Estados Unidos</a></li>
+			            <li><a href="#">Holanda</a></li>
+			            <li><a href="#">Irlanda</a></li>
+			            <li><a href="#">México</a></li>
+			            <li><a href="#">Dinamarca</a></li>
+		            </ul>
+		        </li>
+		        <form class="navbar-form navbar-right" role="search">
+		        <div class="form-group">
+		        	<input type="text" ng-model="query" class="form-control span2" placeholder="Insira um texto aqui">
+		        	<!--<button type="submit" class="btn btn-default span2">Buscar</button>-->
+		        </div>	        
+	        </form>
+	        </ul>
 
-    <body>
-        <div class="body" align="center">
-            <header class="container_header">
-                <h1>Holy Beer</h1>
-                <p class="titulo"> A cerveja de cada dia.</p>
-                <nav id="NAV_1">
-                    <span id="SPAN_2"></span>
-                    <ul id="UL_3">
-                        <li id="LI_4">
-                            <a href="index.html" title="Loja" id="A_5">Home</a>
-                        </li>
-                        <li id="LI_10">
-                            <a href="cadastro.html" title="Minha HNB" id="A_11">Cadastro</a>
-                        </li>
+	      </div>
+	    </nav>
 
-                        <input type="image" src="img/icones/brasil.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Brasil")'>
-                        <input type="image" src="img/icones/alemanha.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Alemanha")'>
-                        <input type="image" src="img/icones/belgica.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Bélgica")'>
-                        <input type="image" src="img/icones/EUA.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Estados Unidos")'>
-                        <input type="image" src="img/icones/holanda.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Holanda")'>
-                        <input type="image" src="img/icones/irlanda.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Irlanda")'>
-                        <input type="image" src="img/icones/mexico.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("México")'>
-                        <input type="image" src="img/icones/dinamarca.png" width="35" height="35"  align="right" alt="Submit" onclick='filtro("Dinamarca")'>
-                        
-                    </ul><span id="SPAN_21"></span>
-                </nav>
-            </header>
+	    <!--Tabela-->
+
+		<div class="tabela row-fluid" ng-if="pagina === 0">    
+		    <div class="col-md-4 bloco flipper" id="card" ng-repeat="bloco in bebidas | filter:query | orderBy:orderProp">
+		    	<div class="face1">
+			    	<img class="img-circle" src="{{bloco.imagens}}" width="200" height="200" align="center">
+			    	<h2>{{bloco.nome}}</h2>
+			    	<p>R{{bloco.preco | currency}}</p>
+			    	<p><img src="img/icones/cerveja.png" id="bandeira">{{bloco.estilo}}</p>
+			    </div>
+
+			    <p><a class="btn btn-sm btn-primary" href="#">Detalhes</a></p>
+
+			    <!--<div class="face2">
+			    	<p>{{bloco.descr}}</p>
+			    	<h3>{{bloco.teor}}</h3>
+			    </div>-->
+
+		    </div>
+		</div>
+
+		<!--fim-->
 
 
-            <div class="container_body" align="center">
-                <div id="paineis" class="row" align="center">
-                        
-                </div>
-            </div>
-            
+		<!--controler-->
+
+		<div class="table-responsive" id="col-md-12" ng-if="pagina === 1"  align="center">
+			<table class="table" id="table">
+		        <thead>  
+		            <tr>  
+		                <th>Cervejas</th>
+		                <th>Pais de Origem</th> 
+		                <th>Preço</th>		                 
+		                <th>Ultima Edição</th>		                 
+		                <th>Editar</th>  
+		                <th>Excluir</th>  
+		            </tr>  
+		        </thead>
+	            <tbody id="tabela">
+	            	<tr class="bloco" ng-repeat="bloco in bebidas  | filter:query">
+	                    <td>{{bloco.nome}}</td>
+	                    <td>{{bloco.origem}}</td>
+	                    <td>{{bloco.preco | currency}}</td>	                    
+	                    <td>{{bloco.updatedAt}}</td>	                    
+	                    <td>
+	                    	<button type="button" onclick="getOne(\''+ data.results[i].objectId +'\')">
+	                    	<img src="img/icones/editar.png" width="35" height="35"  align="center" />
+	                    	</button>
+	                    </td>
+
+	                    <td>
+	                    	<button type="button" onclick="confirm(\''+ data.results[i].objectId +'\')">
+	                    	<img src="img/icones/excluir.png" width="35" height="35"  align="center" />
+	                    	</button>
+	                    </td>
+	                </tr>
+
+	            </tbody>
+		    </table>
+		</div>
+	    
 
 
-            <div id="modal">
-            </div>
-        </div>
-
-        <footer id="rodape">
-            <div id="rodape div2">
-                <h4 id="endereco"><strong>Endereço</strong></h4>
-                <div id="info">
-                    <p>Av. Alberto Barbeta<br>
-                    Numero: 2280<br>
-                    Bairro: Jardim Panorama II</p>
-                </div>
-            </div>            
-        </footer>
+		<!--fim-->
 
 
-    </body>
+		<!--footer
+		
+		<footer>
+			<p class="pull-right">
+				<a>Thnx</a>
+			</p>
+			<p>
+				© 2014 Company, Inc. 
+				<a href="">Terms</a>				
+			</p>
+		</footer>
 
+		<!--fim-->
 
-<html>
+		<script src="js/bootstrap.min.js"></script>
+       	<script src="js/angular.js"></script>
+       	<script type="text/javascript" src="js/bebidasController.js"></script>
+	</body>
+</html>

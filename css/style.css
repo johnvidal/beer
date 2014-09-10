@@ -1,0 +1,143 @@
+    body{
+        background-color: #cccccc;
+        padding-bottom: 40px;
+        color: #5a5a5a;
+    }
+
+    /*.tabela{
+      width: 940px;
+      margin-right: auto;
+      margin-left: auto;
+
+    }*/
+
+    .edicao{
+      width: 940px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  
+
+    .bloco{
+      text-align: center;
+      margin-top: 65px; 
+    }
+
+    #bandeira{
+      /*display: block;
+      float: center;*/
+      height: 21px;
+      width: 22px;
+      margin: 0px 10px 0px 0px;
+    }
+
+
+    /*.btn{
+      position: absolute;
+    }*/
+
+    .navbar-wrapper {
+      position: relative;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px
+    }
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+    }
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+    }
+
+    .btn-primary{
+      position: absolute;
+      top: 350px;
+      right: 227px;  
+    }
+    .form-control{
+      margin-right: 5px;
+    }
+
+    table {
+      max-width: none;
+    }
+    thead>tr>th{
+      text-align: center;
+    }
+
+    /*.edicao{
+      display: none;
+    }
+
+
+    /* flip 
+
+    .tabela {
+      perspective: 100;
+    }
+
+    .tabela:hover .flipper, .tabela.hover .flipper {
+      transform: rotateY(180deg); 
+    }
+
+    .flip-container, .face1, .face2 {
+      /*width: 320px;
+      height: 480px;
+    }
+
+    .flipper {
+      transition: 0.6s;
+      transform-style: preserve-3d;
+
+      position: relative;
+    }
+
+    .face1, .face2 {
+      backface-visibility: hidden;
+
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    .face1 {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+
+    .face2 {
+      transform: rotateY(180deg);
+    } */
+
