@@ -24,23 +24,16 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		        </button>
-		        <a class="navbar-brand" href="#" ng-click="definirPagina(0)">HOLY BEER</a>
+		        <a class="navbar-brand" href="#" ng-click="reload(0)">HOLY BEER</a>
 	        </div>
 	 
 	      <div class="collapse navbar-collapse" id="bar1">
 	        <ul class="nav navbar-nav navbar-right">
-	        	<li ng-click="definirPagina(1)"><a>Controler</a></li>
+	        	<li ng-click="reload(1)"><a>Controler</a></li>
 		        <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paises<b class="caret"></b></a>
 		            <ul class="dropdown-menu" ng-model="orderProp">
-			            <li value="name"><a href="#">Alemanha</a></li>
-			            <li><a href="#">Brasil</a></li>
-			            <li><a href="#">Bélgica</a></li>
-			            <li><a href="#">Estados Unidos</a></li>
-			            <li><a href="#">Holanda</a></li>
-			            <li><a href="#">Irlanda</a></li>
-			            <li><a href="#">México</a></li>
-			            <li><a href="#">Dinamarca</a></li>
+			            <li ng-repeat="pais in paises" ng-click="definirPaises(pais)"><a href="#">{{pais}}</a></li>
 		            </ul>
 		        </li>
 		        <form class="navbar-form navbar-right" role="search">
@@ -59,7 +52,7 @@
 		<div class="tabela row-fluid" ng-if="pagina === 0">    
 		    <div class="col-md-4 bloco flipper" id="card" ng-repeat="bloco in bebidas | filter:query | orderBy:orderProp">
 		    	<div class="face1">
-			    	<img class="img-circle" src="{{bloco.imagens}}" width="200" height="200" align="center">
+			    	<img class="img-circle" ng-src="{{bloco.imagens}}" width="200" height="200" align="center">
 			    	<h2>{{bloco.nome}}</h2>
 			    	<p>R{{bloco.preco | currency}}</p>
 			    	<p><img src="img/icones/cerveja.png" id="bandeira">{{bloco.estilo}}</p>
