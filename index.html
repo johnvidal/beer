@@ -49,9 +49,9 @@
 
 	    <!--Tabela-->
 
-		<div class="tabela row-fluid" ng-if="pagina === 0">    
-		    <div class="col-md-4 bloco flipper" id="card" ng-repeat="bloco in bebidas | filter:query | orderBy:orderProp">
-		    	<div class="face1">
+		<div class="flip tabela row-fluid" ng-if="pagina === 0">    
+		    <div class="col-md-4 bloco card" ng-repeat="bloco in bebidas | filter:query | orderBy:orderProp">
+		    	<div class="face front">
 			    	<img class="img-circle" ng-src="{{bloco.imagens}}" width="200" height="200" align="center">
 			    	<h2>{{bloco.nome}}</h2>
 			    	<p>R{{bloco.preco | currency}}</p>
@@ -60,7 +60,7 @@
 
 			    <p><a class="btn btn-sm btn-primary" href="#">Detalhes</a></p>
 
-			    <!--<div class="face2">
+			    <!--<div class="face back">
 			    	<p>{{bloco.descr}}</p>
 			    	<h3>{{bloco.teor}}</h3>
 			    </div>-->

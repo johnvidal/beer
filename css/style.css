@@ -20,7 +20,7 @@
 
     .bloco{
       text-align: center;
-      margin-top: 65px; 
+      margin-top: 3%; 
     }
 
     #bandeira{
@@ -82,9 +82,9 @@
     }
 
     .btn-primary{
-      position: absolute;
-      top: 350px;
-      right: 227px;  
+      position: relative;
+      /*top: 350px;
+      right: 227px;*/  
     }
     .form-control{
       margin-right: 5px;
@@ -97,47 +97,25 @@
       text-align: center;
     }
 
-    /*.edicao{
-      display: none;
-    }
-
-
-    /* flip 
-
-    .tabela {
-      perspective: 100;
-    }
-
-    .tabela:hover .flipper, .tabela.hover .flipper {
-      transform: rotateY(180deg); 
-    }
-
-    .flip-container, .face1, .face2 {
-      /*width: 320px;
-      height: 480px;
-    }
-
-    .flipper {
-      transition: 0.6s;
-      transform-style: preserve-3d;
-
+    
+    /*flip card 
+    .flip {
+      -webkit-perspective: 800;
       position: relative;
     }
-
-    .face1, .face2 {
-      backface-visibility: hidden;
-
-      position: relative;
-      top: 0;
-      left: 0;
+    .flip .card.flipped {
+      -webkit-transform: rotatey(180deg);
     }
-
-    .face1 {
-      z-index: 2;
-      transform: rotateY(0deg);
+    .flip .card {     
+      -webkit-transform-style: preserve-3d;
+      -webkit-transition: 0.5s;
     }
-
-    .face2 {
-      transform: rotateY(180deg);
-    } */
-
+    .flip .card .face {
+      -webkit-backface-visibility: hidden ;      
+    }
+    .flip .card .front {
+    }
+    .flip .card .back {
+      -webkit-transform: rotatex(180deg);
+      cursor: pointer;
+    }*/

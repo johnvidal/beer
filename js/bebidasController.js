@@ -72,3 +72,12 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 		atualizar($scope);
 	})
 }]);
+
+
+/*$('.flip').toggle(
+    function() {
+        $('.flip .card').addClass('flipped');
+    },
+    function() { $('.flip .card').removeClass('flipped');
+    }
+);*/
