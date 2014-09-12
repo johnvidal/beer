@@ -37,6 +37,8 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 
 	$scope.paises = ['Brasil', 'Bélgica', 'Estados Unidos', 'Holanda', 'Irlanda', 'México', 'Dinamarca'];
 	$scope.pagina = 0;
+	$scope.linhaExcluir = null;
+	$scope.detalheEscolhido = null;
 
 	$scope.reload = function (numeroPag) {
 		$scope.pagina = numeroPag;
@@ -65,19 +67,63 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 		atualizar($scope);
 	};
 
+	$scope.definirDetalhe = function (objectId) {
+		if ($scope.detalheEscolhido) {
+			$scope.detalheEscolhido = null;
+		} else {
+			$scope.detalheEscolhido = objectId;
+		}
+	};
+
+	$scope.excluir = function (objectId) {
+		$scope.linhaExcluir = objectId;
+	};
+
+	$scope.confirmarExcluir = function () {
+		var bebidas = $scope.bebidas,
+			numeroBebidas = bebidas.length,
+			indiceBebida,
+			bebida;
+
+		jQuerySubmit("DELETE",'https://api.parse.com/1/classes/Cervejas/'+ $scope.linhaExcluir, function(data) {
+			for (indiceBebida = 0; indiceBebida < numeroBebidas; indiceBebida++) {
+				bebida = bebidas[indiceBebida];
+				if (bebida) {
+					if (bebida.objectId === $scope.linhaExcluir) {
+						bebidas.splice(indiceBebida, 1);
+						break;
+					}
+				}
+			}
+			$scope.linhaExcluir = null;
+			$scope.bebidas = bebidas;
+			atualizar($scope);
+		});
+	};
+
+	$scope.cancelarExcluir = function () {
+		$scope.linhaExcluir = null;
+		atualizar($scope);
+	};
+
 	jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas', function (data) {
 		var bebidas = data.results;
 		$scope.todasBebidas = bebidas;
 		$scope.bebidas = bebidas;
 		atualizar($scope);
-	})
+	});
+
+	/*function confirmDelet(getID2){
+		$( "#confirmar" ).dialog({
+		          modal: true,
+		          buttons: {
+		          	Sim: function(){
+		          			
+
+		          			$( this ).dialog( "close" )
+		          		},
+		          	Não: function(){$(this).dialog("close")}
+		          }
+		    });
+	}*/
 }]);
-
-
-/*$('.flip').toggle(
-    function() {
-        $('.flip .card').addClass('flipped');
-    },
-    function() { $('.flip .card').removeClass('flipped');
-    }
-);*/

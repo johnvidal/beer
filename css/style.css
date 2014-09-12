@@ -81,11 +81,96 @@
       }
     }
 
-    .btn-primary{
+    /*.botao{
       position: relative;
-      /*top: 350px;
-      right: 227px;*/  
+      top: 350px;
+      right: 227px;  
+    }*/
+
+    .btn {
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      background: none;
+      cursor: pointer;
+      padding: 10px 50px;
+      display: inline-block;
+      margin: 5px 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      outline: none;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
     }
+
+    .btn:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+
+    .btn-1 {
+      border: 3px solid #fff;
+      color: #fff;
+    }
+
+    /* Button 1a */
+    .btn-1a:hover,
+    .btn-1a:active {
+      color: #707070;
+      background: #fff;
+    }
+
+    /*button 2*/
+
+    .btn-2 {
+      background: #cb4e4e;
+      color: #fff;
+      box-shadow: 0 6px #ab3c3c;
+      -webkit-transition: none;
+      -moz-transition: none;
+      transition: none;
+    }
+
+    .btn-2i {
+      border-radius: 20%;
+      width: 50px;
+      height: 20px;
+      padding: 0;
+    }
+
+    .btn-2i:hover {
+      box-shadow: 0 4px #ab3c3c;
+      top: 2px;
+    }
+
+    .btn-2i:active {
+      box-shadow: 0 0 #ab3c3c;
+      top: 6px;
+    }
+
+    .btn-2d {
+      border-radius: 5px;
+    }
+
+    .btn-2d:hover {
+      box-shadow: 0 8px #ab3c3c;
+      top: -2px;
+    }
+
+    .btn-2d:active {
+      box-shadow: 0 0 #ab3c3c;
+      top: 6px;
+    }
+
+
     .form-control{
       margin-right: 5px;
     }
@@ -98,24 +183,5 @@
     }
 
     
-    /*flip card 
-    .flip {
-      -webkit-perspective: 800;
-      position: relative;
-    }
-    .flip .card.flipped {
-      -webkit-transform: rotatey(180deg);
-    }
-    .flip .card {     
-      -webkit-transform-style: preserve-3d;
-      -webkit-transition: 0.5s;
-    }
-    .flip .card .face {
-      -webkit-backface-visibility: hidden ;      
-    }
-    .flip .card .front {
-    }
-    .flip .card .back {
-      -webkit-transform: rotatex(180deg);
-      cursor: pointer;
-    }*/
+    /*flip card*/
+
