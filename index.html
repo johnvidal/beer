@@ -11,6 +11,7 @@
 	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/style.css">
 	</head>
 	
@@ -29,7 +30,7 @@
 	 
 	      <div class="collapse navbar-collapse" id="bar1">
 	        <ul class="nav navbar-nav navbar-right">
-	        	<li ng-click="reload(1)"><a>Controler</a></li>
+	        	<li ng-click="reload(1)"><a>Controle de Cervejas</a></li>
 		        <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paises<b class="caret"></b></a>
 		            <ul class="dropdown-menu" ng-model="orderProp">
@@ -49,23 +50,31 @@
 
 	    <!--Tabela-->
 
-		<div id="filpCard" class="flip row-fluid" ng-if="pagina === 0">    
-		    <div class="col-md-4 bloco card" ng-repeat="bloco in bebidas | filter:query | orderBy:orderProp">
-		    	<div class="face front">
-			    	<img class="img-circle" ng-src="{{bloco.imagens}}" width="200" height="200" align="center">
-			    	<h2>{{bloco.nome}}</h2>
-			    	<p>R{{bloco.preco | currency}}</p>
-			    	<p><img src="img/icones/cerveja.png" id="bandeira">{{bloco.estilo}}</p>
-			    </div>
+		<div class="row-fluid" ng-if="pagina === 0">    
+		    <div class="col-md-4 bloco" ng-repeat="bloco in bebidas | filter:query | orderBy:orderProp">
+		    	<div>
+		    		<div class="face1" ng-if="detalheEscolhido !== bloco.objectId">
+			    		<img class="img-circle" ng-src="{{bloco.imagens}}" width="200"  height="200" align="center">
+			    		<h2>{{bloco.nome}}</h2>
+			    		<p>R{{bloco.preco | currency}}</p>
+			    		<p><img src="img/icones/cerveja.png" id="bandeira">{{bloco.estilo}}</p>
+			    	</div>
 
-			    <!--<p><a class="btn btn-sm btn-primary" href="#">Detalhes</a></p>-->
+			    	<div ng-if="detalheEscolhido === bloco.objectId" class="insideBloco">
+						<h2>{{bloco.nome}}</h2>
+						
+						<div class="descr-container">
+							<p>{{bloco.descr}}</p>
+						</div>
+						
+						<div class="infoBaixas">
+							<h3><img ng-src="{{bloco.bandeira}}" id="bandeira">{{bloco.origem}}</h3>
+							<h3>{{bloco.teor | currency : "%"}}</h3>
+						</div>						
+					</div>
+				</div>
 
-			    <div class="face back" ng-if="detalheEscolhido === bloco.objectId">
-			    	<p>{{bloco.descr}}</p>
-			    	<h3>{{bloco.teor}}</h3>
-			    </div>
-
-			    <button class="btn btn-1 btn-1a" ng-click="definirDetalhe(bloco.objectId)">Detalhes</button>
+			    <button class="btn btn-1 btn-1a" ng-click="definirDetalhe(bloco.objectId)">Detalhes</button>		    
 
 		    </div>
 		</div>
@@ -75,48 +84,136 @@
 
 		<!--controler-->
 
-		<div class="table-responsive" id="col-md-12" ng-if="pagina === 1"  align="center">
-			<table class="table" id="table">
-		        <thead>  
-		            <tr>  
-		                <th>Cervejas</th>
-		                <th>Pais de Origem</th> 
-		                <th>Preço</th>		                 
-		                <th>Ultima Edição</th>		                 
-		                <th>Editar</th>  
-		                <th>Excluir</th>  
-		            </tr>  
-		        </thead> 
-	            <tbody id="tabela">
-	            	<tr class="bloco" ng-repeat="bloco in bebidas">
-	                    <td>{{bloco.nome}}</td>
-	                    <td>{{bloco.origem}}</td>
-	                    <td>{{bloco.preco | currency}}</td>	                    
-	                    <td>{{bloco.updatedAt}}</td>	                    
-	                    <td>
-	                    	<button type="button" class="btn btn-2 btn-2d">
-	                    		Editar
-	                    	</button>
-	                    </td>
+		<div class="table-responsive" ng-if="pagina === 1">
+			<div class="table-container">
+				<table class="table" id="table">
+		        	<thead>  
+		            	<tr>  
+		                	<th>Cervejas</th>
+		        	        <th>Pais de Origem</th> 
+		        	 	    <th>Preço</th>		                 
+		                	<th>Ultima Edição</th>		                 
+		                	<th></th>  
+		            	</tr>  
+		        	</thead> 
+	            	<tbody id="tabela">
+	            		<tr class="bloco" ng-repeat="bloco in bebidas">
+	                    	<td>{{bloco.nome}}</td>
+	                    	<td>{{bloco.origem}}</td>
+	                    	<td>{{bloco.preco | currency}}</td>	                    
+	                    	<td>{{bloco.updatedAt | date:'medium'}}</td>
 
-	                    <td ng-if="linhaExcluir !== bloco.objectId">
-	                    	<button type="button" ng-click="excluir(bloco.objectId)" class="btn btn-2 btn-2d" id=>
-	                    		Remove
+	                    	<td ng-if="linhaExcluir !== bloco.objectId">
+	                    	<button type="button" ng-click="editarBebida(bloco.objectId)" class="btn btn-1 btn-1a btn-detalhe">
+	                    		Ver Detalhes
 	                    	</button>
-	                    </td>
+	                    </td>	                    
+	                  
+	                	</tr>
 
-	                    <td ng-if="linhaExcluir === bloco.objectId">
-	                    	<button type="button" ng-click="confirmarExcluir()" class="btn btn-2 btn-2i">
-	                    		SIM
-	                    	</button>
-	                    	<button type="button" ng-click="cancelarExcluir()" class="btn btn-2 btn-2i">
-	                    		NÃO
-	                    	</button>
-	                    </td>
-	                </tr>
+	            	</tbody>
+		    	</table>
+			</div>
+			
+			<div class="form-container">
+				<form class="form-horizontal">
+					<fieldset>
 
-	            </tbody>
-		    </table>
+						<!-- Form Name -->
+						<legend align="center" ng-if="bebidaEditada === null">Cadastro</legend>
+						<!-- Form Name -->
+						<legend align="center" ng-if="bebidaEditada !== null">Editar</legend>
+
+						<!-- File Button --> 
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="filebutton">Upload Foto</label>
+							<div class="col-md-4">
+								<input id="filebutton" name="filebutton" class="input-file" type="file">
+							</div>
+						</div>
+
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="textinput" >Nome</label>  
+							<div class="col-md-4">
+								<input id="textinput" name="textinput" type="text" placeholder="Nome" class="form-control input-md" ng-model="bebida.nome"> 
+							</div>
+						</div>
+
+						<!-- Textarea -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="textarea">Descrição</label>
+							<div class="col-md-4">                     
+								<textarea class="form-control" id="textarea" maxlength="250" ng-model="bebida.descr">250 caracteres</textarea>
+							</div>
+						</div>
+
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="textinput">Preço</label>  
+							<div class="col-md-4">
+								<input id="textinput" name="textinput" type="text" placeholder="R$xx,xx" class="form-control input-md" ng-model="bebida.preco">
+							</div>
+						</div>
+
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="textinput">Teor Alcoólico</label>  
+							<div class="col-md-4">
+								<input id="textinput" name="textinput" type="text" placeholder="xx,xx%" class="form-control input-md" ng-model="bebida.teor">
+							</div>
+						</div>
+
+						<!-- Select Basic -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="selectbasic">Pais de Origem</label>
+							<div class="col-md-4">
+								<select id="selectbasic" name="selectbasic" class="form-control"  ng-model="bebida.origem">
+									<option value="{{pais}}" ng-repeat="pais in paises">{{pais}}</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Select Basic -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="selectbasic">Estilo</label>
+							<div class="col-md-4">
+								<select id="selectbasic" name="selectbasic" class="form-control"  ng-model="bebida.estilo">
+									<option value="{{estilo}}" ng-repeat="estilo in estilos">{{estilo}}</option>
+								</select>
+							</div>
+						</div>
+
+						<div align="right" ng-if="bebidaEditada !== null">
+							<div class="btn-loc">
+		                    	<button type="button" class="btn btn-1 btn-1a btn-size">
+		                    		Editar
+		                    	</button>
+		                    </div>
+
+		                    <div ng-if="bebidaExcluir === null" class="btn-loc">
+		                    	<button type="button" ng-click="excluir()" class="btn btn-1 btn-1a btn-size" >
+		                    		Remove
+		                    	</button>
+		                    </div>
+
+		                    <div ng-if="bebidaExcluir !== null">
+								<i type="button" ng-click="confirmarExcluir()" class="icon-ok icon-2x buton"></i>
+		                    	<i type="button" ng-click="cancelarExcluir()" class="icon-remove icon-2x buton"></i>	                    		
+		                    </div>
+		                </div>   
+
+						<div align="right" ng-if="bebidaEditada === null">
+							<td>
+		                    	<button type="button" class="btn btn-1 btn-1a btn-detalhe">
+		                    		Cadastrar
+		                    	</button>
+		                    </td>
+		                </div>    
+
+					</fieldset>
+				</form>
+			</div>
 		</div>   
 
 

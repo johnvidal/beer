@@ -4,13 +4,6 @@
         color: #5a5a5a;
     }
 
-    /*.tabela{
-      width: 940px;
-      margin-right: auto;
-      margin-left: auto;
-
-    }*/
-
     .edicao{
       width: 940px;
       margin-right: auto;
@@ -19,8 +12,15 @@
   
 
     .bloco{
+      margin-top: 3%;
       text-align: center;
-      margin-top: 3%; 
+    }
+
+    .insideBloco{
+      width: 381px;
+      height: 305px;
+      margin-right: auto;
+      margin-left: auto; 
     }
 
     #bandeira{
@@ -29,6 +29,33 @@
       height: 21px;
       width: 22px;
       margin: 0px 10px 0px 0px;
+    }
+
+    .infoBaixas{
+      margin-top: 192px;
+      position: relative;
+    }
+    .descr-container{
+      position: absolute;
+      text-align: left;
+      width: 400px;
+    }
+
+    .table-container{
+      width: 50%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      border: 3px solid #fff;
+      display:inline-block;
+    }
+
+    .form-container{
+      width: 40%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      border: 3px solid #fff;
+      display:inline-block;
+      position: absolute;
     }
 
 
@@ -81,12 +108,6 @@
       }
     }
 
-    /*.botao{
-      position: relative;
-      top: 350px;
-      right: 227px;  
-    }*/
-
     .btn {
       border: none;
       font-family: inherit;
@@ -94,7 +115,6 @@
       color: inherit;
       background: none;
       cursor: pointer;
-      padding: 10px 50px;
       display: inline-block;
       margin: 5px 10px;
       text-transform: uppercase;
@@ -105,6 +125,8 @@
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
+      width: 190px;
+      height: 46px;
     }
 
     .btn:after {
@@ -121,6 +143,16 @@
       color: #fff;
     }
 
+    .btn-size{
+      width: 100px;
+      height: 50px;
+    }
+
+    .btn-detalhe{
+      width: 150px;
+      height: 50px;
+    }
+
     /* Button 1a */
     .btn-1a:hover,
     .btn-1a:active {
@@ -128,48 +160,16 @@
       background: #fff;
     }
 
-    /*button 2*/
-
-    .btn-2 {
-      background: #cb4e4e;
-      color: #fff;
-      box-shadow: 0 6px #ab3c3c;
-      -webkit-transition: none;
-      -moz-transition: none;
-      transition: none;
+    .btn-loc{
+      display: inline-block;
     }
 
-    .btn-2i {
-      border-radius: 20%;
-      width: 50px;
-      height: 20px;
-      padding: 0;
+    .buton{
+      cursor: pointer;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-top: 100px;
     }
-
-    .btn-2i:hover {
-      box-shadow: 0 4px #ab3c3c;
-      top: 2px;
-    }
-
-    .btn-2i:active {
-      box-shadow: 0 0 #ab3c3c;
-      top: 6px;
-    }
-
-    .btn-2d {
-      border-radius: 5px;
-    }
-
-    .btn-2d:hover {
-      box-shadow: 0 8px #ab3c3c;
-      top: -2px;
-    }
-
-    .btn-2d:active {
-      box-shadow: 0 0 #ab3c3c;
-      top: 6px;
-    }
-
 
     .form-control{
       margin-right: 5px;
@@ -182,6 +182,14 @@
       text-align: center;
     }
 
-    
+    .detalhe {
+      position: absolute;
+      float: left;
+      border-radius: 15px;
+      background: #303030;
+      width: 188px;
+      left: 169px;
+      z-index: 2;
+    }
     /*flip card*/
 
