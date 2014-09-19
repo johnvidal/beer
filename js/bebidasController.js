@@ -17,8 +17,8 @@ function atualizar(scope, funcao) {
 	}
 }
 
-function jQuerySubmit(type, url, retorno) {
-    $.ajax({
+function jQuerySubmit(type, url, objeto, retorno) {
+	var parametrosEnvio = {
         beforeSend: function(xhrObj){
             xhrObj.setRequestHeader("X-Parse-Application-Id","L7F9ql3DctcnCtoDwah0GGG8GFw8vuWJ6OWFJgNp");
             xhrObj.setRequestHeader("X-Parse-REST-API-Key","TLtoYkorgdYipUyLayJnWEjZUuiuhWhTimVzJLg5");                
@@ -26,10 +26,17 @@ function jQuerySubmit(type, url, retorno) {
         type: type,
         url: url,
         processData: false,
+        contentType: "application/json; charset=UTF-8",
         dataType: "json",
         success: function(data){ retorno(data)},
         error: function(){ alert("Erro ao carregar PARSE")}
-    });
+    };
+
+    if (objeto) {
+    	parametrosEnvio.data = JSON.stringify(objeto);
+    }
+
+    $.ajax(parametrosEnvio);
 }
 
 bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
@@ -76,7 +83,7 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 				bebidasPais.push(bebida);
 			}
 		}
-		$scope.bebidas = bebidasPais;face1
+		$scope.bebidas = bebidasPais;
 		atualizar($scope);
 	};
 
@@ -86,6 +93,16 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 		} else {
 			$scope.detalheEscolhido = objectId;
 		}
+	};
+
+	$scope.habilitarCadastro = function () {
+		if ($scope.bebidaEditada === -1) {
+			$scope.bebidaEditada = null;
+		} else {
+			$scope.bebidaEditada = -1;
+		}
+		$scope.bebida = bebidaInicial;
+
 	};
 
 	$scope.editarBebida = function (objectId) {
@@ -116,7 +133,7 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 			indiceBebida,
 			bebida;
 
-		jQuerySubmit("DELETE",'https://api.parse.com/1/classes/Cervejas/'+ $scope.bebidaExcluir, function(data) {
+		jQuerySubmit("DELETE", 'https://api.parse.com/1/classes/Cervejas/'+ $scope.bebidaExcluir, null, function(data) {
 			for (indiceBebida = 0; indiceBebida < numeroBebidas; indiceBebida++) {
 				bebida = bebidas[indiceBebida];
 				if (bebida) {
@@ -138,13 +155,20 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 		atualizar($scope);
 	};
 
-	jQuerySubmit("GET",'https://api.parse.com/1/classes/Cervejas', function (data) {
+	jQuerySubmit("GET", 'https://api.parse.com/1/classes/Cervejas', null, function (data) {
 		var bebidas = data.results;
 		$scope.todasBebidas = bebidas;
 		$scope.bebidas = bebidas;
 		atualizar($scope);
 	});
 
+
+	$scope.cadastrarBebida = function (getId) {
+		var bebida = $scope.bebida;
+		jQuerySubmit("POST", 'https://api.parse.com/1/classes/Cervejas/' + getID, bebida, function(data) {
+			console.log(data);
+		});
+	}
 	/*function confirmDelet(getID2){
 		$( "#confirmar" ).dialog({
 		          modal: true,

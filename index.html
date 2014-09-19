@@ -30,7 +30,8 @@
 	 
 	      <div class="collapse navbar-collapse" id="bar1">
 	        <ul class="nav navbar-nav navbar-right">
-	        	<li ng-click="reload(1)"><a>Controle de Cervejas</a></li>
+	        	<li ng-click="habilitarCadastro()" ng-if="pagina === 1"><a>Cadastrar</a></li>
+	        	<li ng-click="reload(1)" ng-if="pagina === 0"><a>Controle de Cervejas</a></li>
 		        <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paises<b class="caret"></b></a>
 		            <ul class="dropdown-menu" ng-model="orderProp">
@@ -115,14 +116,14 @@
 		    	</table>
 			</div>
 			
-			<div class="form-container">
+			<div class="form-container" id="cadastro" ng-if="bebidaEditada !== null">
 				<form class="form-horizontal">
 					<fieldset>
 
 						<!-- Form Name -->
-						<legend align="center" ng-if="bebidaEditada === null">Cadastro</legend>
+						<legend align="center" ng-if="bebidaEditada === -1">Cadastro</legend>
 						<!-- Form Name -->
-						<legend align="center" ng-if="bebidaEditada !== null">Editar</legend>
+						<legend align="center" ng-if="bebidaEditada !== -1">Editar</legend>
 
 						<!-- File Button --> 
 						<div class="form-group">
@@ -144,7 +145,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="textarea">Descrição</label>
 							<div class="col-md-4">                     
-								<textarea class="form-control" id="textarea" maxlength="250" ng-model="bebida.descr">250 caracteres</textarea>
+								<textarea class="form-control form-descr" id="textarea" placeholder="250 caracteres" maxlength="250" ng-model="bebida.descr" ></textarea>
 							</div>
 						</div>
 
@@ -152,7 +153,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="textinput">Preço</label>  
 							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="text" placeholder="R$xx,xx" class="form-control input-md" ng-model="bebida.preco">
+								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.preco">
 							</div>
 						</div>
 
@@ -160,7 +161,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="textinput">Teor Alcoólico</label>  
 							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="text" placeholder="xx,xx%" class="form-control input-md" ng-model="bebida.teor">
+								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.teor">
 							</div>
 						</div>
 
@@ -184,9 +185,9 @@
 							</div>
 						</div>
 
-						<div align="right" ng-if="bebidaEditada !== null">
+						<div align="right" ng-if="bebidaEditada !== -1">
 							<div class="btn-loc">
-		                    	<button type="button" class="btn btn-1 btn-1a btn-size">
+		                    	<button type="button" ng-click="cadastrarBebida(bebida.objectId)"  class="btn btn-1 btn-1a btn-size">
 		                    		Editar
 		                    	</button>
 		                    </div>
@@ -197,15 +198,15 @@
 		                    	</button>
 		                    </div>
 
-		                    <div ng-if="bebidaExcluir !== null">
+		                    <div ng-if="bebidaExcluir !== -1" class="btn-loc margem">
 								<i type="button" ng-click="confirmarExcluir()" class="icon-ok icon-2x buton"></i>
 		                    	<i type="button" ng-click="cancelarExcluir()" class="icon-remove icon-2x buton"></i>	                    		
 		                    </div>
 		                </div>   
 
-						<div align="right" ng-if="bebidaEditada === null">
+						<div align="right" ng-if="bebidaEditada === -1">
 							<td>
-		                    	<button type="button" class="btn btn-1 btn-1a btn-detalhe">
+		                    	<button type="button" ng-click="cadastrarBebida(null)" class="btn btn-1 btn-1a btn-detalhe">
 		                    		Cadastrar
 		                    	</button>
 		                    </td>

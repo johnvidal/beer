@@ -17,7 +17,7 @@
     }
 
     .insideBloco{
-      width: 381px;
+      width: 90%;
       height: 305px;
       margin-right: auto;
       margin-left: auto; 
@@ -38,7 +38,7 @@
     .descr-container{
       position: absolute;
       text-align: left;
-      width: 400px;
+      width: 90%;
     }
 
     .table-container{
@@ -163,6 +163,9 @@
     .btn-loc{
       display: inline-block;
     }
+    .margem{
+      margin-right: 20px;
+    }
 
     .buton{
       cursor: pointer;
@@ -173,6 +176,12 @@
 
     .form-control{
       margin-right: 5px;
+    }
+
+    .form-descr{
+      width: 300px; 
+      height: 200px;
+      margin: 0px -111.9375px 0px 0px; 
     }
 
     table {
@@ -192,4 +201,13 @@
       z-index: 2;
     }
     /*flip card*/
+
+    #cadastro {
+      position: absolute;
+      float: right;
+      width: 50%;
+      top: 70px;
+      right: 0px;
+      background: #cccccc;
+    }
 
