@@ -121,6 +121,8 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 				}
 			}
 		}
+
+		$('#cadastro').toggle()
 	};
 
 	$scope.excluir = function () {
