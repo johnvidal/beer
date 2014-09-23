@@ -58,6 +58,12 @@
       position: absolute;
     }
 
+    .form-horizontal{
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+    }
+
     .navbar-wrapper {
       position: relative;
       z-index: 10;
