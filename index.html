@@ -85,35 +85,33 @@
 
 		<!--controler-->
 
-		<div class="table-responsive" ng-if="pagina === 1">
+		<div class="table-bordered table-striped table-condensed" ng-if="pagina === 1">
 			<div class="table-container">
-				<table class="table" id="table">
-		        	<thead>  
-		            	<tr>  
-		                	<th>Cervejas</th>
-		        	        <th>Pais de Origem</th> 
-		        	 	    <th>Preço</th>		                 
-		                	<th>Ultima Edição</th>		                 
-		                	<th></th>  
-		            	</tr>  
-		        	</thead> 
-	            	<tbody id="tabela">
-	            		<tr class="bloco" ng-repeat="bloco in bebidas">
-	                    	<td>{{bloco.nome}}</td>
-	                    	<td>{{bloco.origem}}</td>
-	                    	<td>{{bloco.preco | currency}}</td>	                    
-	                    	<td>{{bloco.updatedAt | date:'medium'}}</td>
 
-	                    	<td ng-if="linhaExcluir !== bloco.objectId">
-	                    	<button type="button" ng-click="editarBebida(bloco.objectId)" class="btn btn-1 btn-1a btn-detalhe">
-	                    		Ver Detalhes
-	                    	</button>
-	                    </td>	                    
-	                  
-	                	</tr>
-
-	            	</tbody>
-		    	</table>
+		    	<table class="table" id="table">
+					<thead>
+						<tr>
+							<th class="cerveja">Cervejas</th>
+		        	        <th class="pais">Pais de Origem</th> 
+		        	 	    <th class="preco">Preço</th>		                 
+		                	<th class="ultimasEdicao">Ultima Edição</th>		                 
+		                	<th class="numeric"></th>
+						</tr>
+					</thead>
+					<tbody id="tabela">
+						<tr class="bloco" ng-repeat="bloco in bebidas">
+							<td class="numeric">{{bloco.nome}}</td>
+	                    	<td class="numeric">{{bloco.origem}}</td>
+	                    	<td class="numeric">{{bloco.preco | currency}}</td>	                    
+	                    	<td class="numeric">{{bloco.updatedAt | date:'medium'}}</td>
+	                    	<td ng-if="linhaExcluir !== bloco.objectId" class="numeric">
+		                    	<button type="button" ng-click="editarBebida(bloco.objectId)" class="btn btn-1 btn-1a btn-detalhe">
+		                    		Ver Detalhes
+		                    	</button>
+	                    	</td>							
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			
 			<div class="form-container" id="cadastro" ng-if="bebidaEditada !== null">
