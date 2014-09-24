@@ -207,6 +207,10 @@
       margin: 0px -111.9375px 0px 0px; 
     }
 
+    .input-file{
+      width: 98%
+    }
+
     table {
       max-width: none;
     }
