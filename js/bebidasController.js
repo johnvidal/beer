@@ -121,11 +121,11 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 				}
 			}
 		}
-		$('#cadastro').show()
 	};
 
 	$scope.excluir = function () {
 		$scope.bebidaExcluir = $scope.bebidaEditada;
+		atualizar($scope);
 	};
 
 	$scope.confirmarExcluir = function () {
@@ -170,6 +170,10 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 			console.log(data);
 		});
 	}
+
+	$scope.fecharcadastro = function () {
+		$scope.bebidaEditada = null;
+	}
 	/*function confirmDelet(getID2){
 		$( "#confirmar" ).dialog({
 		          modal: true,
@@ -192,8 +196,4 @@ function maxLength(el) {
             if (this.value.length >= max) return false;
         };
     }
-}
-
-function close(){
-	$('#cadastro').hide()
 }

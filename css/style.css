@@ -54,6 +54,7 @@
       width: 95%;
       margin-left: 2.5%;
       margin-right: 2.5%;
+      margin-bottom: 1%; 
       border: 3px solid #fff;
       display:inline-block;
       position: absolute;
@@ -89,6 +90,7 @@
       font-size: 16px;
       font-weight: bold;
       text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+      margin-left: 0.5%;
     }
     .navbar .nav > li > a {
       padding: 15px 20px;
@@ -186,17 +188,20 @@
     }
 
     .btn-loc{
-      display: inline-block;
+      display: inline-flex;
+      margin-bottom: 3px;
     }
+
     .margem{
-      margin-right: 20px;
+      margin-right: 5px;
     }
 
     .buton{
       cursor: pointer;
-      margin-left: 5px;
-      margin-right: 5px;
-      margin-top: 100px;
+      margin-left: 1%;
+      margin-right: 1%;
+      top: 5px;
+      display:inline;
     }
 
     .form-control{
@@ -230,12 +235,9 @@
     /*flip card
 
     #cadastro {
-      position: absolute;
-      float: right;
-      width: 95%;
-      top: 131px;
-      right: 0px;
-      margin-top: -50px;
+      position: fixed;
+      float: left;
+      bottom: 0px;
       background: #cccccc;
     }*/
 
