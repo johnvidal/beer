@@ -2,15 +2,16 @@
 <html lang="en" ng-app="bebidasApp">
 	
 	<head>
+	    <title>Holy Beer</title>
 	    <meta charset="utf-8">
 	    <meta name="description" content="Holy Beer">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Holy Beer</title>
 	    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="css/style.css">
 	</head>
 	
@@ -116,7 +117,7 @@
 			<div class="form-container" id="cadastro" ng-if="bebidaEditada !== null">
 				<form class="form-horizontal">
 					<fieldset>
-						<i type="button" class="fa fa-times-circle fa-1" ng-click="fecharcadastro()"></i>
+						<i type="button" class="fa fa-times-circle fa-2x btn-close" ng-click="fecharcadastro()"></i>
 
 						<!-- Form Name -->
 						<legend align="center" ng-if="bebidaEditada === -1">Cadastro</legend>
@@ -197,8 +198,8 @@
 		                    </div>
 
 		                    <div ng-if="bebidaExcluir !== null" class="btn-loc margem">
-								<i type="button" ng-click="confirmarExcluir()" class="btn btn-1 btn-1a btn-detalhe buton">Confimar</i>
-		                    	<i type="button" ng-click="cancelarExcluir()" class="btn btn-1 btn-1a btn-detalhe buton">Cancelar</i>	                    		
+								<i type="button" ng-click="confirmarExcluir()" class="fa fa-check-circle-o fa-3x buton"></i>
+		                    	<i type="button" ng-click="cancelarExcluir()" class="fa fa-times-circle-o fa-3x buton"></i>	                    		
 		                    </div>
 		                </div>   
 

@@ -66,13 +66,6 @@
       margin-right: 2.5%;
     }
 
-    .fa{
-      float: right;
-      margin-top: -44px;
-      margin-right: -1.5%;
-      cursor: pointer;
-    }
-
     .navbar-wrapper {
       position: relative;
       z-index: 10;
@@ -198,10 +191,17 @@
 
     .buton{
       cursor: pointer;
-      margin-left: 1%;
-      margin-right: 1%;
-      top: 5px;
+      margin-top: 50%;
+      margin-left: 20%;
+      margin-right: 45%;
       display:inline;
+    }
+
+    .btn-close{
+      float: right;
+      cursor: pointer;
+      margin-top: -3.25%;
+      margin-right: -2%;
     }
 
     .form-control{
