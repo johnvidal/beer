@@ -184,22 +184,24 @@
 							</div>
 						</div>
 
-						<div align="right" ng-if="bebidaEditada !== -1">
-							<div class="btn-loc">
+						<div ng-if="bebidaEditada !== -1" class=" btns">
+							<div>
 		                    	<button type="button" ng-click="cadastrarBebida(bebida.objectId)"  class="btn btn-1 btn-1a btn-size">
 		                    		Editar
 		                    	</button>
 		                    </div>
 
-		                    <div ng-if="bebidaExcluir === null" class="btn-loc">
+		                    <div ng-if="bebidaExcluir === null">
 		                    	<button type="button" ng-click="excluir()" class="btn btn-1 btn-1a btn-size" >
 		                    		Remove
 		                    	</button>
 		                    </div>
 
-		                    <div ng-if="bebidaExcluir !== null" class="btn-loc margem">
-								<i type="button" ng-click="confirmarExcluir()" class="fa fa-check-circle-o fa-3x buton"></i>
-		                    	<i type="button" ng-click="cancelarExcluir()" class="fa fa-times-circle-o fa-3x buton"></i>	                    		
+		                    <div ng-if="bebidaExcluir !== null">
+			                    <div class="btns-confirm">
+			                    	<i type="button" ng-click="confirmarExcluir()" class="fa fa-check-circle-o fa-3x buton"></i>
+		                    		<i type="button" ng-click="cancelarExcluir()" class="fa fa-times-circle-o fa-3x buton"></i>
+			                    </div>
 		                    </div>
 		                </div>   
 

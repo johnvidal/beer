@@ -185,20 +185,8 @@
       background: #fff;
     }
 
-    .btn-loc{
-      display: inline-flex;
-      margin-bottom: 3px;
-    }
-
-    .margem{
-      margin-right: 5px;
-    }
-
     .buton{
       cursor: pointer;
-      margin-top: 50%;
-      margin-left: 20%;
-      margin-right: 45%;
       display:inline;
     }
 
@@ -208,6 +196,19 @@
       margin-top: -49px;
       margin-right: -2.25%;
       position: relative;
+    }
+
+    .btns{
+      display: inline-flex;
+      float: right;
+    }
+
+    .btns-confirm{
+      margin-top: 11%;
+    }
+
+    .margem{
+      margin-top: 1%;
     }
 
     .form-control{
