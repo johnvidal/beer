@@ -29,7 +29,7 @@ function jQuerySubmit(type, url, objeto, retorno) {
         contentType: "application/json; charset=UTF-8",
         dataType: "json",
         success: function(data){ retorno(data)},
-        error: function(){ alert("Erro ao carregar PARSE")}
+        /*error: function(){ alert("Erro ao carregar PARSE")}*/
     };
 
     if (objeto) {
@@ -88,7 +88,7 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 	};
 
 	$scope.definirDetalhe = function (objectId) {
-		if ($scope.detalheEscolhido) {
+		if ($scope.detalheEscolhido === objectId) {
 			$scope.detalheEscolhido = null;
 		} else {
 			$scope.detalheEscolhido = objectId;
@@ -164,9 +164,9 @@ bebidasApp.controller('bebidasCtrl', ['$scope', function ($scope) {
 	});
 
 
-	$scope.cadastrarBebida = function (getId) {
+	$scope.cadastrarBebida = function () {
 		var bebida = $scope.bebida;
-		jQuerySubmit("POST", 'https://api.parse.com/1/classes/Cervejas/' + getID, bebida, function(data) {
+		jQuerySubmit("POST", 'https://api.parse.com/1/classes/Cervejas/', bebida, function(data) {
 			console.log(data);
 		});
 	}
@@ -197,3 +197,12 @@ function maxLength(el) {
         };
     }
 }
+
+
+   	var pattern = /^(?:\s*\d{8}\s*(?:,|$))+$/;
+	var testvalue = document.getElementById('checkNumber').value;
+	if(pattern.test(testvalue)){
+	alert("Correct");
+	} else {
+	alert("Wrong");
+	}       

@@ -8,10 +8,11 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css" media="screen">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+	    <link rel="stylesheet" href="bootstrapvalidator/dist/css/bootstrapValidator.css"/>
         <link rel="stylesheet" href="css/style.css">
 	</head>
 	
@@ -35,14 +36,15 @@
 		        <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paises<b class="caret"></b></a>
 		            <ul class="dropdown-menu" ng-model="orderProp">
+		            	<li ng-click="bebidas = todasBebidas"><a href="#">Todos</a></li>
 			            <li ng-repeat="pais in paises" ng-click="definirPaises(pais)"><a href="#">{{pais}}</a></li>
 		            </ul>
 		        </li>
 		        <form class="navbar-form navbar-right" role="search">
-		        <div class="form-group">
-		        	<input type="text" ng-model="query" class="form-control span2" placeholder="Insira um texto aqui">
-		        	<!--<button type="submit" class="btn btn-default span2">Buscar</button>-->
-		        </div>	        
+			        <div class="form-group">
+			        	<input type="text" ng-model="query" class="form-control span2" placeholder="Insira um texto aqui">
+			        	<!--<button type="submit" class="btn btn-default span2">Buscar</button>-->
+			        </div>	        
 	        	</form>
 	        </ul>
 
@@ -106,7 +108,7 @@
 	                    	<td class="numeric">{{bloco.updatedAt | date:'medium'}}</td>
 	                    	<td ng-if="linhaExcluir !== bloco.objectId" class="numeric">
 		                    	<button type="button" ng-click="editarBebida(bloco.objectId)" class="btn btn-1 btn-1a btn-detalhe">
-		                    		Ver Detalhes
+		                    		<p class="verDetalhes">Ver Detalhes</p>
 		                    	</button>
 	                    	</td>							
 						</tr>
@@ -115,8 +117,8 @@
 			</div>
 			
 			<div class="form-container" id="cadastro" ng-if="bebidaEditada !== null">
-				<form class="form-horizontal">
-					<fieldset>
+				<form class="form-horizontal" id="formulario1" method="post" name="formulario1">
+					<fieldset class="form-group">
 						<i type="button" class="fa fa-times-circle fa-2x btn-close" ng-click="fecharcadastro()"></i>
 
 						<!-- Form Name -->
@@ -124,19 +126,11 @@
 						<!-- Form Name -->
 						<legend align="center" ng-if="bebidaEditada !== -1">Editar</legend>
 
-						<!-- File Button --> 
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="filebutton">Upload Foto</label>
-							<div class="col-md-4">
-								<input id="filebutton" name="filebutton" class="input-file" type="file">
-							</div>
-						</div>
-
 						<!-- Text input-->
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="textinput" >Nome</label>  
 							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="text" placeholder="Nome" class="form-control input-md" ng-model="bebida.nome"> 
+								<input id="textinput" name="textinput" type="text" placeholder="Nome" class="form-control input-md" ng-model="bebida.nome" name="fullName" maxLength="10"> 
 							</div>
 						</div>
 
@@ -144,7 +138,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="textarea">Descrição</label>
 							<div class="col-md-4">                     
-								<textarea class="form-control form-descr" id="textarea" placeholder="250 caracteres" maxlength="250" ng-model="bebida.descr" ></textarea>
+								<textarea class="form-control form-descr" id="textarea" placeholder="250 caracteres" maxLength="250" ng-model="bebida.descr"  name="content"></textarea>
 							</div>
 						</div>
 
@@ -152,7 +146,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="textinput">Preço</label>  
 							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.preco">
+								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.preco" name="preco" onchange="commaValidation()">
 							</div>
 						</div>
 
@@ -160,7 +154,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="textinput">Teor Alcoólico</label>  
 							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.teor">
+								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.teor" name="alcool" onchange="commaValidation()">
 							</div>
 						</div>
 
@@ -168,7 +162,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="selectbasic">Pais de Origem</label>
 							<div class="col-md-4">
-								<select id="selectbasic" name="selectbasic" class="form-control"  ng-model="bebida.origem">
+								<select id="selectbasic2" name="selectbasic" class="form-control"  ng-model="bebida.origem" name="item2">
 									<option value="{{pais}}" ng-repeat="pais in paises">{{pais}}</option>
 								</select>
 							</div>
@@ -178,10 +172,16 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="selectbasic">Estilo</label>
 							<div class="col-md-4">
-								<select id="selectbasic" name="selectbasic" class="form-control"  ng-model="bebida.estilo">
+								<select id="selectbasic" name="selectbasic" class="form-control"  ng-model="bebida.estilo" name="item">
 									<option value="{{estilo}}" ng-repeat="estilo in estilos">{{estilo}}</option>
 								</select>
 							</div>
+						</div>
+
+						<div class="form-group">
+						    <div class="col-md-9 col-md-offset-3">
+						        <div id="messages"></div>
+						    </div>
 						</div>
 
 						<div ng-if="bebidaEditada !== -1" class=" btns">
@@ -192,7 +192,7 @@
 		                    </div>
 
 		                    <div ng-if="bebidaExcluir === null">
-		                    	<button type="button" ng-click="excluir()" class="btn btn-1 btn-1a btn-size" >
+		                    	<button type="button" ng-click="excluir()" class="btn btn-1 btn-1a btn-size">
 		                    		Remove
 		                    	</button>
 		                    </div>
@@ -207,7 +207,7 @@
 
 						<div align="right" ng-if="bebidaEditada === -1">
 							<td>
-		                    	<button type="button" ng-click="cadastrarBebida(null)" class="btn btn-1 btn-1a btn-detalhe">
+		                    	<button type="submit" name="submit" ng-click="cadastrarBebida(null)" class="btn btn-1 btn-1a btn-detalhe">
 		                    		Cadastrar
 		                    	</button>
 		                    </td>
@@ -236,8 +236,24 @@
 
 		<!--fim-->
 
+		<script>
+    		
+			    $("#formulario1").validate(
+			      {
+			        rules: 
+			        {
+			          item: 
+			          {
+			            required: true
+			          }
+			        }
+			      });	
+			
+  		</script>
+
 		<script src="js/bootstrap.min.js"></script>
        	<script src="js/angular.js"></script>
        	<script type="text/javascript" src="js/bebidasController.js"></script>
+       	<script type="text/javascript" src="bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 	</body>
 </html>

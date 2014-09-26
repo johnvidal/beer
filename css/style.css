@@ -194,7 +194,7 @@
       float: right;
       cursor: pointer;
       margin-top: -49px;
-      margin-right: -2.25%;
+      margin-right: -1.25%;
       position: relative;
     }
 
@@ -241,6 +241,11 @@
       left: 169px;
       z-index: 2;
     }
+
+    .verDetalhes{
+      font-size: 100%;
+    }
+
     /*flip card
 
     #cadastro {
