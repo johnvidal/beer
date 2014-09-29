@@ -5,7 +5,7 @@
 	    <title>Holy Beer</title>
 	    <meta charset="utf-8">
 	    <meta name="description" content="Holy Beer">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="viewPort" content="width=device-width, initial-scale=1">
 	    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
@@ -60,7 +60,7 @@
 			    		<img class="img-circle" ng-src="{{bloco.imagens}}" width="200"  height="200" align="center">
 			    		<h2>{{bloco.nome}}</h2>
 			    		<p>R{{bloco.preco | currency}}</p>
-			    		<p><img src="img/icones/cerveja.png" id="bandeira">{{bloco.estilo}}</p>
+			    		<p><img src="img/icones/cerveja.png" class="iconeRedondo">{{bloco.estilo}}</p>
 			    	</div>
 
 			    	<div ng-if="detalheEscolhido === bloco.objectId" class="insideBloco">
@@ -71,7 +71,7 @@
 						</div>
 						
 						<div class="infoBaixas">
-							<h3><img ng-src="{{bloco.bandeira}}" id="bandeira">{{bloco.origem}}</h3>
+							<h3><img ng-src="{{bloco.bandeira}}" class="iconeRedondo">{{bloco.origem}}</h3>
 							<h3>{{bloco.teor | currency : "%"}}</h3>
 						</div>						
 					</div>
@@ -118,102 +118,110 @@
 			
 			<div class="form-container" id="cadastro" ng-if="bebidaEditada !== null">
 				<form class="form-horizontal" id="formulario1" method="post" name="formulario1">
-					<fieldset class="form-group">
-						<i type="button" class="fa fa-times-circle fa-2x btn-close" ng-click="fecharcadastro()"></i>
+                    <div class="bordas">
+                        <fieldset class="form-group">
+                            <i type="button" class="fa fa-times-circle fa-2x btn-close" ng-click="fecharcadastro()"></i>
 
-						<!-- Form Name -->
-						<legend align="center" ng-if="bebidaEditada === -1">Cadastro</legend>
-						<!-- Form Name -->
-						<legend align="center" ng-if="bebidaEditada !== -1">Editar</legend>
+                            <!-- Form Name -->
+                            <legend align="center" ng-if="bebidaEditada === -1">Cadastro</legend>
+                            <!-- Form Name -->
+                            <legend align="center" ng-if="bebidaEditada !== -1">Editar</legend>
 
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="textinput" >Nome</label>  
-							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="text" placeholder="Nome" class="form-control input-md" ng-model="bebida.nome" name="fullName" maxLength="10"> 
-							</div>
-						</div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nome</label>
 
-						<!-- Textarea -->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="textarea">Descrição</label>
-							<div class="col-md-4">                     
-								<textarea class="form-control form-descr" id="textarea" placeholder="250 caracteres" maxLength="250" ng-model="bebida.descr"  name="content"></textarea>
-							</div>
-						</div>
+                                <div class="col-md-4">
+                                    <input name="textinput" type="text" placeholder="Nome" class="form-control input-md"
+                                           ng-model="bebida.nome" maxLength="10">
+                                </div>
+                            </div>
 
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="textinput">Preço</label>  
-							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.preco" name="preco" onchange="commaValidation()">
-							</div>
-						</div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Descrição</label>
 
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="textinput">Teor Alcoólico</label>  
-							<div class="col-md-4">
-								<input id="textinput" name="textinput" type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.teor" name="alcool" onchange="commaValidation()">
-							</div>
-						</div>
+                                <div class="col-md-4">
+                                    <textarea class="form-control form-descr" id="textarea" placeholder="250 caracteres"
+                                              maxLength="250" ng-model="bebida.descr" name="content"></textarea>
+                                </div>
+                            </div>
 
-						<!-- Select Basic -->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="selectbasic">Pais de Origem</label>
-							<div class="col-md-4">
-								<select id="selectbasic2" name="selectbasic" class="form-control"  ng-model="bebida.origem" name="item2">
-									<option value="{{pais}}" ng-repeat="pais in paises">{{pais}}</option>
-								</select>
-							</div>
-						</div>
 
-						<!-- Select Basic -->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="selectbasic">Estilo</label>
-							<div class="col-md-4">
-								<select id="selectbasic" name="selectbasic" class="form-control"  ng-model="bebida.estilo" name="item">
-									<option value="{{estilo}}" ng-repeat="estilo in estilos">{{estilo}}</option>
-								</select>
-							</div>
-						</div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Preço</label>
+                                <div class="col-md-4">
+                                    <input name="textinput" type="number" placeholder="xx,xx"
+                                           class="form-control input-md" ng-model="bebida.preco" step="0.1">
+                                </div>
+                            </div>
 
-						<div class="form-group">
-						    <div class="col-md-9 col-md-offset-3">
-						        <div id="messages"></div>
-						    </div>
-						</div>
 
-						<div ng-if="bebidaEditada !== -1" class=" btns">
-							<div>
-		                    	<button type="button" ng-click="cadastrarBebida(bebida.objectId)"  class="btn btn-1 btn-1a btn-size">
-		                    		Editar
-		                    	</button>
-		                    </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Teor Alcoólico</label>
+                                <div class="col-md-4">
+                                    <input type="number" placeholder="xx,xx" class="form-control input-md" ng-model="bebida.teor" name="alcool" step="0.1">
+                                </div>
+                            </div>
 
-		                    <div ng-if="bebidaExcluir === null">
-		                    	<button type="button" ng-click="excluir()" class="btn btn-1 btn-1a btn-size">
-		                    		Remove
-		                    	</button>
-		                    </div>
+                            <!-- Select Basic -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Pais de Origem</label>
+                                <div class="col-md-4">
+                                    <select class="form-control"  ng-model="bebida.origem" name="item2">
+                                        <option value="outro" selected="selected">Outro</option>
+                                        <option value="{{pais}}" ng-repeat="pais in paises">{{pais}}</option>
+                                    </select>
+                                </div>
+                            </div>
 
-		                    <div ng-if="bebidaExcluir !== null">
-			                    <div class="btns-confirm">
-			                    	<i type="button" ng-click="confirmarExcluir()" class="fa fa-check-circle-o fa-3x buton"></i>
-		                    		<i type="button" ng-click="cancelarExcluir()" class="fa fa-times-circle-o fa-3x buton"></i>
-			                    </div>
-		                    </div>
-		                </div>   
+                            <!-- Select Basic -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Estilo</label>
+                                <div class="col-md-4">
+                                    <select class="form-control"  ng-model="bebida.estilo" name="item">
+                                        <option value="outro" selected="selected">Outro</option>
+                                        <option value="{{estilo}}" ng-repeat="estilo in estilos">{{estilo}}</option>
+                                    </select>
+                                </div>
+                            </div>
 
-						<div align="right" ng-if="bebidaEditada === -1">
-							<td>
-		                    	<button type="submit" name="submit" ng-click="cadastrarBebida(null)" class="btn btn-1 btn-1a btn-detalhe">
-		                    		Cadastrar
-		                    	</button>
-		                    </td>
-		                </div>    
+                            <div class="form-group">
+                                <div class="col-md-9 col-md-offset-3">
+                                    <div id="messages"></div>
+                                </div>
+                            </div>
 
-					</fieldset>
+                            <div ng-if="bebidaEditada !== -1" class=" btns">
+                                <div>
+                                    <button type="button" ng-click="cadastrarBebida(bebida.objectId)"  class="btn btn-1 btn-1a btn-size">
+                                        Editar
+                                    </button>
+                                </div>
+
+                                <div ng-if="bebidaExcluir === null">
+                                    <button type="button" ng-click="excluir()" class="btn btn-1 btn-1a btn-size">
+                                        Remove
+                                    </button>
+                                </div>
+
+                                <div ng-if="bebidaExcluir !== null">
+                                    <div class="btns-confirm">
+                                        <i type="button" ng-click="confirmarExcluir()" class="fa fa-check-circle-o fa-3x buton"></i>
+                                        <i type="button" ng-click="cancelarExcluir()" class="fa fa-times-circle-o fa-3x buton"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div align="right" ng-if="bebidaEditada === -1">
+                                <td>
+                                    <button type="submit" name="submit" ng-click="cadastrarBebida(null)" class="btn btn-1 btn-1a btn-detalhe">
+                                        Cadastrar
+                                    </button>
+                                </td>
+                            </div>
+
+                        </fieldset>
+                    </div>
 				</form>
 			</div>
 		</div>   
@@ -236,24 +244,8 @@
 
 		<!--fim-->
 
-		<script>
-    		
-			    $("#formulario1").validate(
-			      {
-			        rules: 
-			        {
-			          item: 
-			          {
-			            required: true
-			          }
-			        }
-			      });	
-			
-  		</script>
-
 		<script src="js/bootstrap.min.js"></script>
        	<script src="js/angular.js"></script>
        	<script type="text/javascript" src="js/bebidasController.js"></script>
-       	<script type="text/javascript" src="bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 	</body>
 </html>
